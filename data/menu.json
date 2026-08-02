@@ -1,0 +1,276 @@
+[
+  {
+    "id": "mi-1",
+    "category_id": "cat-app",
+    "name": "Crispy Plantain Bites",
+    "slug": "crispy-plantain-bites",
+    "description": "Golden fried plantain coins dusted with sea salt and served with spicy pepper sauce. A Limbe classic starter.",
+    "price": 2500,
+    "images": [
+      "/placeholders/food-plantain-bites.png"
+    ],
+    "ingredients": [
+      "Plantain",
+      "Palm oil",
+      "Sea salt",
+      "Pepper sauce"
+    ],
+    "allergens": [],
+    "prep_time": "15 min",
+    "spice_level": 2,
+    "is_chefs_special": false,
+    "is_available": true,
+    "status": "published",
+    "thumbnail": "/placeholders/food-plantain-bites.png"
+  },
+  {
+    "id": "mi-2",
+    "category_id": "cat-app",
+    "name": "Seafood Spring Rolls",
+    "slug": "seafood-spring-rolls",
+    "description": "Hand-rolled spring rolls filled with fresh coastal prawns, crab, and herbs. Served with sweet chili dip.",
+    "price": 4500,
+    "images": [
+      "/placeholders/food-spring-rolls.png"
+    ],
+    "ingredients": [
+      "Prawns",
+      "Crab",
+      "Rice paper",
+      "Herbs",
+      "Sweet chili"
+    ],
+    "allergens": [
+      "Shellfish",
+      "Gluten"
+    ],
+    "prep_time": "20 min",
+    "spice_level": 1,
+    "is_chefs_special": true,
+    "is_available": true,
+    "status": "published",
+    "thumbnail": "/placeholders/food-spring-rolls.png"
+  },
+  {
+    "id": "mi-3",
+    "category_id": "cat-mains",
+    "name": "Grilled Barracuda",
+    "slug": "grilled-barracuda",
+    "description": "Fresh Limbe barracuda grilled over charcoal, finished with citrus butter and served with plantains and garden salad.",
+    "price": 8500,
+    "images": [
+      "/placeholders/food-grilled-fish.png"
+    ],
+    "ingredients": [
+      "Barracuda",
+      "Citrus butter",
+      "Plantain",
+      "Salad greens"
+    ],
+    "allergens": [
+      "Fish",
+      "Dairy"
+    ],
+    "prep_time": "35 min",
+    "spice_level": 1,
+    "is_chefs_special": true,
+    "is_available": true,
+    "status": "published",
+    "thumbnail": "/placeholders/food-grilled-fish.png"
+  },
+  {
+    "id": "mi-4",
+    "category_id": "cat-mains",
+    "name": "Ndolè Royal",
+    "slug": "ndole-royal",
+    "description": "Our signature ndolè with bitterleaf, groundnuts, smoked fish, and tender beef. Served with ripe plantains.",
+    "price": 7000,
+    "images": [
+      "/placeholders/food-ndole.png"
+    ],
+    "ingredients": [
+      "Bitterleaf",
+      "Groundnuts",
+      "Smoked fish",
+      "Beef",
+      "Plantain"
+    ],
+    "allergens": [
+      "Fish",
+      "Nuts"
+    ],
+    "prep_time": "40 min",
+    "spice_level": 2,
+    "is_chefs_special": true,
+    "is_available": true,
+    "status": "published",
+    "thumbnail": "/placeholders/food-ndole.png"
+  },
+  {
+    "id": "mi-5",
+    "category_id": "cat-mains",
+    "name": "Chicken Suya Platter",
+    "slug": "chicken-suya-platter",
+    "description": "Spice-rubbed grilled chicken skewers with onions, tomatoes, and house suya spice. Generous sharing platter.",
+    "price": 6500,
+    "images": [
+      "/placeholders/food-chicken-suya.png"
+    ],
+    "ingredients": [
+      "Chicken",
+      "Suya spice",
+      "Onion",
+      "Tomato"
+    ],
+    "allergens": [
+      "Peanuts"
+    ],
+    "prep_time": "30 min",
+    "spice_level": 4,
+    "is_chefs_special": false,
+    "is_available": true,
+    "status": "published",
+    "thumbnail": "/placeholders/food-chicken-suya.png"
+  },
+  {
+    "id": "mi-6",
+    "category_id": "cat-desserts",
+    "name": "Coconut Beignets",
+    "slug": "coconut-beignets",
+    "description": "Warm coconut beignets dusted with powdered sugar, served with passion fruit coulis.",
+    "price": 3000,
+    "images": [
+      "/placeholders/food-beignets.png"
+    ],
+    "ingredients": [
+      "Flour",
+      "Coconut",
+      "Sugar",
+      "Passion fruit"
+    ],
+    "allergens": [
+      "Gluten",
+      "Eggs"
+    ],
+    "prep_time": "15 min",
+    "spice_level": 0,
+    "is_chefs_special": false,
+    "is_available": true,
+    "status": "published",
+    "thumbnail": "/placeholders/food-beignets.png"
+  },
+  {
+    "id": "mi-7",
+    "category_id": "cat-cocktails",
+    "name": "Limbe Sunset",
+    "slug": "limbe-sunset",
+    "description": "House cocktail with tropical fruits, white rum, and a hint of hibiscus. Served over ice.",
+    "price": 4500,
+    "images": [
+      "/placeholders/drink-cocktail.png"
+    ],
+    "ingredients": [
+      "White rum",
+      "Mango",
+      "Pineapple",
+      "Hibiscus"
+    ],
+    "allergens": [],
+    "prep_time": "5 min",
+    "spice_level": 0,
+    "is_chefs_special": false,
+    "is_available": true,
+    "status": "published",
+    "thumbnail": "/placeholders/drink-cocktail.png"
+  },
+  {
+    "id": "mi-8",
+    "category_id": "cat-wines",
+    "name": "House Red (Glass)",
+    "slug": "house-red-glass",
+    "description": "Smooth South African red, selected for pairing with our grilled mains.",
+    "price": 3500,
+    "images": [
+      "/placeholders/drink-wine.png"
+    ],
+    "ingredients": [
+      "Red wine"
+    ],
+    "allergens": [
+      "Sulfites"
+    ],
+    "prep_time": "2 min",
+    "spice_level": 0,
+    "is_chefs_special": false,
+    "is_available": true,
+    "status": "published",
+    "thumbnail": "/placeholders/drink-wine.png"
+  },
+  {
+    "id": "mi-9",
+    "category_id": "cat-soft",
+    "name": "Fresh Ginger Juice",
+    "slug": "fresh-ginger-juice",
+    "description": "Pressed ginger, pineapple, and a touch of honey. Refreshing and revitalizing.",
+    "price": 2000,
+    "images": [
+      "/placeholders/drink-ginger.png"
+    ],
+    "ingredients": [
+      "Ginger",
+      "Pineapple",
+      "Honey"
+    ],
+    "allergens": [],
+    "prep_time": "5 min",
+    "spice_level": 2,
+    "is_chefs_special": false,
+    "is_available": true,
+    "status": "published",
+    "thumbnail": "/placeholders/drink-ginger.png"
+  },
+  {
+    "id": "mi-10",
+    "category_id": "cat-lounge",
+    "name": "Champagne Toast",
+    "slug": "champagne-toast",
+    "description": "Chilled champagne flute — perfect for lounge celebrations and date nights.",
+    "price": 8000,
+    "images": [
+      "/placeholders/drink-champagne.png"
+    ],
+    "ingredients": [
+      "Champagne"
+    ],
+    "allergens": [
+      "Sulfites"
+    ],
+    "prep_time": "2 min",
+    "spice_level": 0,
+    "is_chefs_special": false,
+    "is_available": true,
+    "status": "published",
+    "thumbnail": "/placeholders/drink-champagne.png"
+  },
+  {
+    "id": "mi-1785468281360",
+    "category_id": "cat-mains",
+    "name": "Jellof Rice",
+    "slug": "jellof-rice",
+    "description": "A blend of spicy mixtures of rice and chicken",
+    "price": 2500,
+    "images": [
+      "/placeholders/food-jollof.png"
+    ],
+    "thumbnail": "/placeholders/food-jollof.png",
+    "ingredients": [
+      "Rice"
+    ],
+    "allergens": [],
+    "prep_time": "30 mins",
+    "spice_level": 0,
+    "is_chefs_special": false,
+    "is_available": true,
+    "status": "published"
+  }
+]

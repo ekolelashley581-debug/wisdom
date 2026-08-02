@@ -1,0 +1,222 @@
+[
+  {
+    "id": "ss-1",
+    "category_id": "spa-hair",
+    "name": "Classic Haircut",
+    "slug": "classic-haircut",
+    "description": "Precision cut and finish tailored to your face shape and style preference.",
+    "price_by_level": {
+      "junior": 3000,
+      "senior": 5000,
+      "master": 8000
+    },
+    "duration": "45 min",
+    "images": [
+      "/placeholders/spa-hair.png"
+    ],
+    "is_package": false,
+    "is_available": true,
+    "status": "published",
+    "thumbnail": "/placeholders/spa-hair.png"
+  },
+  {
+    "id": "ss-2",
+    "category_id": "spa-hair",
+    "name": "Plaiting & Braids",
+    "slug": "plaiting-braids",
+    "description": "Protective styles from classic cornrows to intricate Ghana braids.",
+    "price_by_level": {
+      "junior": 5000,
+      "senior": 8000,
+      "master": 12000
+    },
+    "duration": "1–3 hrs",
+    "images": [
+      "/placeholders/spa-braids.png"
+    ],
+    "is_package": false,
+    "is_available": true,
+    "status": "published",
+    "thumbnail": "/placeholders/spa-braids.png"
+  },
+  {
+    "id": "ss-3",
+    "category_id": "spa-nails",
+    "name": "Manicure",
+    "slug": "manicure",
+    "description": "Nail shaping, cuticle care, polish, and hand massage for a polished finish.",
+    "price_by_level": {
+      "junior": 4000,
+      "senior": 6000,
+      "master": 9000
+    },
+    "duration": "45 min",
+    "images": [
+      "/placeholders/spa-nails.png"
+    ],
+    "is_package": false,
+    "is_available": true,
+    "status": "published",
+    "thumbnail": "/placeholders/spa-nails.png"
+  },
+  {
+    "id": "ss-4",
+    "category_id": "spa-nails",
+    "name": "Pedicure",
+    "slug": "pedicure",
+    "description": "Foot soak, exfoliation, nail care, and polish with a relaxing foot massage.",
+    "price_by_level": {
+      "junior": 4500,
+      "senior": 7000,
+      "master": 10000
+    },
+    "duration": "60 min",
+    "images": [
+      "/placeholders/spa-nails.png"
+    ],
+    "is_package": false,
+    "is_available": true,
+    "status": "published",
+    "thumbnail": "/placeholders/spa-nails.png"
+  },
+  {
+    "id": "ss-5",
+    "category_id": "spa-body",
+    "name": "Sauna Session",
+    "slug": "sauna-session",
+    "description": "Private sauna time to detox, relax muscles, and reset after a long day.",
+    "price_by_level": {
+      "junior": 5000,
+      "senior": 5000,
+      "master": 5000
+    },
+    "duration": "30 min",
+    "images": [
+      "/placeholders/spa-sauna.png"
+    ],
+    "is_package": false,
+    "is_available": true,
+    "status": "published",
+    "thumbnail": "/placeholders/spa-sauna.png"
+  },
+  {
+    "id": "ss-6",
+    "category_id": "spa-body",
+    "name": "Body Scrub",
+    "slug": "body-scrub",
+    "description": "Full-body exfoliation with natural oils and salts for silky, glowing skin.",
+    "price_by_level": {
+      "junior": 8000,
+      "senior": 12000,
+      "master": 15000
+    },
+    "duration": "60 min",
+    "images": [
+      "/placeholders/spa-scrub.png"
+    ],
+    "is_package": false,
+    "is_available": true,
+    "status": "published",
+    "thumbnail": "/placeholders/spa-scrub.png"
+  },
+  {
+    "id": "ss-7",
+    "category_id": "spa-body",
+    "name": "Relaxation Massage",
+    "slug": "relaxation-massage",
+    "description": "Full-body massage with aromatic oils to release tension and restore calm.",
+    "price_by_level": {
+      "junior": 10000,
+      "senior": 15000,
+      "master": 20000
+    },
+    "duration": "60–90 min",
+    "images": [
+      "/placeholders/spa-massage.png"
+    ],
+    "is_package": false,
+    "is_available": true,
+    "status": "published",
+    "thumbnail": "/placeholders/spa-massage.png"
+  },
+  {
+    "id": "ss-8",
+    "category_id": "spa-face",
+    "name": "Classic Facial",
+    "slug": "classic-facial",
+    "description": "Deep cleanse, exfoliation, mask, and moisturizer for radiant skin.",
+    "price_by_level": {
+      "junior": 8000,
+      "senior": 12000,
+      "master": 16000
+    },
+    "duration": "60 min",
+    "images": [
+      "/placeholders/spa-facial.png"
+    ],
+    "is_package": false,
+    "is_available": true,
+    "status": "published",
+    "thumbnail": "/placeholders/spa-facial.png"
+  },
+  {
+    "id": "ss-9",
+    "category_id": "spa-face",
+    "name": "Ear Piercing",
+    "slug": "ear-piercing",
+    "description": "Professional piercing with sterile equipment and aftercare guidance.",
+    "price_by_level": {
+      "junior": 5000,
+      "senior": 7000,
+      "master": 10000
+    },
+    "duration": "20 min",
+    "images": [
+      "/placeholders/spa-piercing.png"
+    ],
+    "is_package": false,
+    "is_available": true,
+    "status": "published",
+    "thumbnail": "/placeholders/spa-piercing.png"
+  },
+  {
+    "id": "ss-10",
+    "category_id": "spa-packages",
+    "name": "Bride Package",
+    "slug": "bride-package",
+    "description": "Hair, makeup-ready facial, manicure, and pedicure — complete bridal glow for your day.",
+    "price_by_level": {
+      "junior": 35000,
+      "senior": 45000,
+      "master": 60000
+    },
+    "duration": "4 hrs",
+    "images": [
+      "/placeholders/spa-bride.png"
+    ],
+    "is_package": true,
+    "is_available": true,
+    "status": "published",
+    "thumbnail": "/placeholders/spa-bride.png"
+  },
+  {
+    "id": "ss-11",
+    "category_id": "spa-packages",
+    "name": "Couples Day",
+    "slug": "couples-day",
+    "description": "Side-by-side massage, body scrub, and sauna for two. Ideal for anniversaries and date days.",
+    "price_by_level": {
+      "junior": 40000,
+      "senior": 55000,
+      "master": 70000
+    },
+    "duration": "3 hrs",
+    "images": [
+      "/placeholders/spa-couples.png"
+    ],
+    "is_package": true,
+    "is_available": true,
+    "status": "published",
+    "thumbnail": "/placeholders/spa-couples.png"
+  }
+]

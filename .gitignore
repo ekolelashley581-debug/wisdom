@@ -28,6 +28,10 @@ yarn-error.log*
 # local env files
 .env*.local
 
+# uploaded media binaries (metadata kept in /data)
+/public/uploads/*
+!/public/uploads/.gitkeep
+
 # vercel
 .vercel
 

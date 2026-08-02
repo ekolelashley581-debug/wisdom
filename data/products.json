@@ -1,0 +1,94 @@
+[
+  {
+    "id": "sp-1",
+    "name": "Shea Body Butter",
+    "slug": "shea-body-butter",
+    "description": "Rich whipped shea butter infused with coconut oil for deep hydration. Used in our body treatments and available to take home.",
+    "sizes": [
+      {
+        "label": "100ml",
+        "price": 3500
+      },
+      {
+        "label": "250ml",
+        "price": 6500
+      }
+    ],
+    "price": 3500,
+    "images": [
+      "/placeholders/product-shea.png"
+    ],
+    "status": "published",
+    "is_available": true,
+    "thumbnail": "/placeholders/product-shea.png"
+  },
+  {
+    "id": "sp-2",
+    "name": "Teal Glow Face Oil",
+    "slug": "teal-glow-face-oil",
+    "description": "Lightweight face oil with vitamin E for a natural, luminous finish. Signature scent of the WISDOM spa.",
+    "sizes": [
+      {
+        "label": "30ml",
+        "price": 8000
+      },
+      {
+        "label": "50ml",
+        "price": 12000
+      }
+    ],
+    "price": 8000,
+    "images": [
+      "/placeholders/product-face-oil.png"
+    ],
+    "status": "published",
+    "is_available": true,
+    "thumbnail": "/placeholders/product-face-oil.png"
+  },
+  {
+    "id": "sp-3",
+    "name": "Coastal Salt Scrub",
+    "slug": "coastal-salt-scrub",
+    "description": "Mineral-rich salt scrub with citrus oils — the same polish used in our body scrub sessions.",
+    "sizes": [
+      {
+        "label": "200g",
+        "price": 7000
+      },
+      {
+        "label": "400g",
+        "price": 11000
+      }
+    ],
+    "price": 7000,
+    "images": [
+      "/placeholders/product-scrub.png"
+    ],
+    "status": "published",
+    "is_available": true,
+    "thumbnail": "/placeholders/product-scrub.png"
+  },
+  {
+    "id": "sp-4",
+    "name": "Hair Elixir",
+    "slug": "hair-elixir",
+    "description": "Nourishing oil blend for soft, shiny hair — perfect after plaiting or heat styling.",
+    "sizes": [
+      {
+        "label": "50ml",
+        "price": 9500
+      },
+      {
+        "label": "100ml",
+        "price": 15000
+      }
+    ],
+    "price": 9500,
+    "images": [
+      "/placeholders/product-hair-elixir.png"
+    ],
+    "status": "published",
+    "is_available": true,
+    "thumbnail": "/placeholders/product-hair-elixir.png"
+  }
+]

@@ -1,0 +1,422 @@
+[
+  {
+    "id": "media-ph-1",
+    "url": "/placeholders/blog-bride-package.png",
+    "name": "blog-bride-package.png",
+    "alt_text": "blog bride package",
+    "folder": "blog",
+    "size": 2546455,
+    "created_at": "2026-08-02T00:41:20.427Z",
+    "usage_refs": [
+      "draft-placeholder"
+    ]
+  },
+  {
+    "id": "media-ph-2",
+    "url": "/placeholders/blog-dining-night.png",
+    "name": "blog-dining-night.png",
+    "alt_text": "blog dining night",
+    "folder": "blog",
+    "size": 2039816,
+    "created_at": "2026-08-02T00:41:20.427Z",
+    "usage_refs": [
+      "draft-placeholder"
+    ]
+  },
+  {
+    "id": "media-ph-3",
+    "url": "/placeholders/blog-facial-tips.png",
+    "name": "blog-facial-tips.png",
+    "alt_text": "blog facial tips",
+    "folder": "blog",
+    "size": 2161870,
+    "created_at": "2026-08-02T00:41:20.427Z",
+    "usage_refs": [
+      "draft-placeholder"
+    ]
+  },
+  {
+    "id": "media-ph-4",
+    "url": "/placeholders/drink-champagne.png",
+    "name": "drink-champagne.png",
+    "alt_text": "drink champagne",
+    "folder": "restaurant",
+    "size": 1912724,
+    "created_at": "2026-08-02T00:41:20.427Z",
+    "usage_refs": [
+      "draft-placeholder"
+    ]
+  },
+  {
+    "id": "media-ph-5",
+    "url": "/placeholders/drink-cocktail.png",
+    "name": "drink-cocktail.png",
+    "alt_text": "drink cocktail",
+    "folder": "restaurant",
+    "size": 1737757,
+    "created_at": "2026-08-02T00:41:20.427Z",
+    "usage_refs": [
+      "draft-placeholder"
+    ]
+  },
+  {
+    "id": "media-ph-6",
+    "url": "/placeholders/drink-ginger.png",
+    "name": "drink-ginger.png",
+    "alt_text": "drink ginger",
+    "folder": "restaurant",
+    "size": 2053965,
+    "created_at": "2026-08-02T00:41:20.427Z",
+    "usage_refs": [
+      "draft-placeholder"
+    ]
+  },
+  {
+    "id": "media-ph-7",
+    "url": "/placeholders/drink-wine.png",
+    "name": "drink-wine.png",
+    "alt_text": "drink wine",
+    "folder": "restaurant",
+    "size": 1833793,
+    "created_at": "2026-08-02T00:41:20.427Z",
+    "usage_refs": [
+      "draft-placeholder"
+    ]
+  },
+  {
+    "id": "media-ph-8",
+    "url": "/placeholders/experience-lounge.png",
+    "name": "experience-lounge.png",
+    "alt_text": "experience lounge",
+    "folder": "brand",
+    "size": 1862847,
+    "created_at": "2026-08-02T00:41:20.427Z",
+    "usage_refs": [
+      "draft-placeholder"
+    ]
+  },
+  {
+    "id": "media-ph-9",
+    "url": "/placeholders/experience-restaurant.png",
+    "name": "experience-restaurant.png",
+    "alt_text": "experience restaurant",
+    "folder": "brand",
+    "size": 2425471,
+    "created_at": "2026-08-02T00:41:20.428Z",
+    "usage_refs": [
+      "draft-placeholder"
+    ]
+  },
+  {
+    "id": "media-ph-10",
+    "url": "/placeholders/experience-spa.png",
+    "name": "experience-spa.png",
+    "alt_text": "experience spa",
+    "folder": "brand",
+    "size": 2283075,
+    "created_at": "2026-08-02T00:41:20.428Z",
+    "usage_refs": [
+      "draft-placeholder"
+    ]
+  },
+  {
+    "id": "media-ph-11",
+    "url": "/placeholders/food-beignets.png",
+    "name": "food-beignets.png",
+    "alt_text": "food beignets",
+    "folder": "restaurant",
+    "size": 2376940,
+    "created_at": "2026-08-02T00:41:20.428Z",
+    "usage_refs": [
+      "draft-placeholder"
+    ]
+  },
+  {
+    "id": "media-ph-12",
+    "url": "/placeholders/food-chicken-suya.png",
+    "name": "food-chicken-suya.png",
+    "alt_text": "food chicken suya",
+    "folder": "restaurant",
+    "size": 2792468,
+    "created_at": "2026-08-02T00:41:20.428Z",
+    "usage_refs": [
+      "draft-placeholder"
+    ]
+  },
+  {
+    "id": "media-ph-13",
+    "url": "/placeholders/food-grilled-fish.png",
+    "name": "food-grilled-fish.png",
+    "alt_text": "food grilled fish",
+    "folder": "restaurant",
+    "size": 2733310,
+    "created_at": "2026-08-02T00:41:20.429Z",
+    "usage_refs": [
+      "draft-placeholder"
+    ]
+  },
+  {
+    "id": "media-ph-14",
+    "url": "/placeholders/food-jollof.png",
+    "name": "food-jollof.png",
+    "alt_text": "food jollof",
+    "folder": "restaurant",
+    "size": 2514052,
+    "created_at": "2026-08-02T00:41:20.429Z",
+    "usage_refs": [
+      "draft-placeholder"
+    ]
+  },
+  {
+    "id": "media-ph-15",
+    "url": "/placeholders/food-ndole.png",
+    "name": "food-ndole.png",
+    "alt_text": "food ndole",
+    "folder": "restaurant",
+    "size": 2743303,
+    "created_at": "2026-08-02T00:41:20.429Z",
+    "usage_refs": [
+      "draft-placeholder"
+    ]
+  },
+  {
+    "id": "media-ph-16",
+    "url": "/placeholders/food-plantain-bites.png",
+    "name": "food-plantain-bites.png",
+    "alt_text": "food plantain bites",
+    "folder": "restaurant",
+    "size": 2668451,
+    "created_at": "2026-08-02T00:41:20.429Z",
+    "usage_refs": [
+      "draft-placeholder"
+    ]
+  },
+  {
+    "id": "media-ph-17",
+    "url": "/placeholders/food-spring-rolls.png",
+    "name": "food-spring-rolls.png",
+    "alt_text": "food spring rolls",
+    "folder": "restaurant",
+    "size": 2233107,
+    "created_at": "2026-08-02T00:41:20.429Z",
+    "usage_refs": [
+      "draft-placeholder"
+    ]
+  },
+  {
+    "id": "media-ph-18",
+    "url": "/placeholders/hero-wisdom.png",
+    "name": "hero-wisdom.png",
+    "alt_text": "hero wisdom",
+    "folder": "brand",
+    "size": 2303684,
+    "created_at": "2026-08-02T00:41:20.429Z",
+    "usage_refs": [
+      "draft-placeholder"
+    ]
+  },
+  {
+    "id": "media-ph-19",
+    "url": "/placeholders/product-face-oil.png",
+    "name": "product-face-oil.png",
+    "alt_text": "product face oil",
+    "folder": "spa",
+    "size": 1158126,
+    "created_at": "2026-08-02T00:41:20.429Z",
+    "usage_refs": [
+      "draft-placeholder"
+    ]
+  },
+  {
+    "id": "media-ph-20",
+    "url": "/placeholders/product-hair-elixir.png",
+    "name": "product-hair-elixir.png",
+    "alt_text": "product hair elixir",
+    "folder": "spa",
+    "size": 1340795,
+    "created_at": "2026-08-02T00:41:20.429Z",
+    "usage_refs": [
+      "draft-placeholder"
+    ]
+  },
+  {
+    "id": "media-ph-21",
+    "url": "/placeholders/product-scrub.png",
+    "name": "product-scrub.png",
+    "alt_text": "product scrub",
+    "folder": "spa",
+    "size": 1489290,
+    "created_at": "2026-08-02T00:41:20.429Z",
+    "usage_refs": [
+      "draft-placeholder"
+    ]
+  },
+  {
+    "id": "media-ph-22",
+    "url": "/placeholders/product-shea.png",
+    "name": "product-shea.png",
+    "alt_text": "product shea",
+    "folder": "spa",
+    "size": 1450373,
+    "created_at": "2026-08-02T00:41:20.430Z",
+    "usage_refs": [
+      "draft-placeholder"
+    ]
+  },
+  {
+    "id": "media-ph-23",
+    "url": "/placeholders/spa-braids.png",
+    "name": "spa-braids.png",
+    "alt_text": "spa braids",
+    "folder": "spa",
+    "size": 2447956,
+    "created_at": "2026-08-02T00:41:20.430Z",
+    "usage_refs": [
+      "draft-placeholder"
+    ]
+  },
+  {
+    "id": "media-ph-24",
+    "url": "/placeholders/spa-bride.png",
+    "name": "spa-bride.png",
+    "alt_text": "spa bride",
+    "folder": "spa",
+    "size": 2664468,
+    "created_at": "2026-08-02T00:41:20.430Z",
+    "usage_refs": [
+      "draft-placeholder"
+    ]
+  },
+  {
+    "id": "media-ph-25",
+    "url": "/placeholders/spa-couples.png",
+    "name": "spa-couples.png",
+    "alt_text": "spa couples",
+    "folder": "spa",
+    "size": 2035343,
+    "created_at": "2026-08-02T00:41:20.430Z",
+    "usage_refs": [
+      "draft-placeholder"
+    ]
+  },
+  {
+    "id": "media-ph-26",
+    "url": "/placeholders/spa-facial.png",
+    "name": "spa-facial.png",
+    "alt_text": "spa facial",
+    "folder": "spa",
+    "size": 1925994,
+    "created_at": "2026-08-02T00:41:20.430Z",
+    "usage_refs": [
+      "draft-placeholder"
+    ]
+  },
+  {
+    "id": "media-ph-27",
+    "url": "/placeholders/spa-hair.png",
+    "name": "spa-hair.png",
+    "alt_text": "spa hair",
+    "folder": "spa",
+    "size": 2189047,
+    "created_at": "2026-08-02T00:41:20.430Z",
+    "usage_refs": [
+      "draft-placeholder"
+    ]
+  },
+  {
+    "id": "media-ph-28",
+    "url": "/placeholders/spa-massage.png",
+    "name": "spa-massage.png",
+    "alt_text": "spa massage",
+    "folder": "spa",
+    "size": 2144904,
+    "created_at": "2026-08-02T00:41:20.430Z",
+    "usage_refs": [
+      "draft-placeholder"
+    ]
+  },
+  {
+    "id": "media-ph-29",
+    "url": "/placeholders/spa-nails.png",
+    "name": "spa-nails.png",
+    "alt_text": "spa nails",
+    "folder": "spa",
+    "size": 1836965,
+    "created_at": "2026-08-02T00:41:20.430Z",
+    "usage_refs": [
+      "draft-placeholder"
+    ]
+  },
+  {
+    "id": "media-ph-30",
+    "url": "/placeholders/spa-piercing.png",
+    "name": "spa-piercing.png",
+    "alt_text": "spa piercing",
+    "folder": "spa",
+    "size": 1944359,
+    "created_at": "2026-08-02T00:41:20.430Z",
+    "usage_refs": [
+      "draft-placeholder"
+    ]
+  },
+  {
+    "id": "media-ph-31",
+    "url": "/placeholders/spa-sauna.png",
+    "name": "spa-sauna.png",
+    "alt_text": "spa sauna",
+    "folder": "spa",
+    "size": 1925400,
+    "created_at": "2026-08-02T00:41:20.430Z",
+    "usage_refs": [
+      "draft-placeholder"
+    ]
+  },
+  {
+    "id": "media-ph-32",
+    "url": "/placeholders/spa-scrub.png",
+    "name": "spa-scrub.png",
+    "alt_text": "spa scrub",
+    "folder": "spa",
+    "size": 2504761,
+    "created_at": "2026-08-02T00:41:20.431Z",
+    "usage_refs": [
+      "draft-placeholder"
+    ]
+  },
+  {
+    "id": "media-ph-33",
+    "url": "/placeholders/staff-blessing.png",
+    "name": "staff-blessing.png",
+    "alt_text": "staff blessing",
+    "folder": "staff",
+    "size": 1926290,
+    "created_at": "2026-08-02T00:41:20.431Z",
+    "usage_refs": [
+      "draft-placeholder"
+    ]
+  },
+  {
+    "id": "media-ph-34",
+    "url": "/placeholders/staff-daniel.png",
+    "name": "staff-daniel.png",
+    "alt_text": "staff daniel",
+    "folder": "staff",
+    "size": 1891485,
+    "created_at": "2026-08-02T00:41:20.431Z",
+    "usage_refs": [
+      "draft-placeholder"
+    ]
+  },
+  {
+    "id": "media-ph-35",
+    "url": "/placeholders/staff-marie.png",
+    "name": "staff-marie.png",
+    "alt_text": "staff marie",
+    "folder": "staff",
+    "size": 2227493,
+    "created_at": "2026-08-02T00:41:20.431Z",
+    "usage_refs": [
+      "draft-placeholder"
+    ]
+  }
+]

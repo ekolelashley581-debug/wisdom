@@ -3,25 +3,135 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a;
+  --foreground: #e8e8e8;
+  --primary: #0a0a0a;
+  --secondary: #0d7377;
+  --silver: #c0c0c0;
+  --surface: #121212;
+  --surface-elevated: #1a1a1a;
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-silver: var(--silver);
+  --color-glow: #14b8a6;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+@layer components {
+  .container-wisdom {
+    @apply mx-auto w-full px-5 md:px-8;
+    max-width: 1200px;
+  }
+
+  .glass-card {
+    @apply overflow-hidden rounded-2xl border backdrop-blur-md transition-all duration-500;
+    border-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.04);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+  }
+
+  .glass-card:hover {
+    @apply -translate-y-1.5;
+    border-color: rgba(13, 115, 119, 0.4);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.55), 0 0 24px rgba(13, 115, 119, 0.4);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white transition duration-300;
+    background-color: var(--color-secondary, #0d7377);
+  }
+
+  .btn-primary:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 0 24px color-mix(in srgb, var(--color-secondary, #0d7377) 40%, transparent);
+  }
+
+  .btn-whatsapp {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white transition duration-300;
+    background-color: #25d366;
+    box-shadow: 0 0 16px rgba(37, 211, 102, 0.45);
+  }
+
+  .btn-whatsapp:hover {
+    filter: brightness(1.1);
+    transform: scale(1.02);
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border px-6 py-3 text-sm font-semibold transition duration-300;
+    border-color: rgba(192, 192, 192, 0.4);
+    color: #e8e8e8;
+  }
+
+  .btn-outline:hover {
+    border-color: #14b8a6;
+    color: #14b8a6;
+    box-shadow: 0 0 24px rgba(13, 115, 119, 0.4);
+  }
+
+  .btn-silver {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border px-6 py-3 text-sm font-semibold transition duration-300;
+    border-color: rgba(192, 192, 192, 0.3);
+    background-color: rgba(192, 192, 192, 0.1);
+    color: #e8e8e8;
+  }
+
+  .btn-silver:hover {
+    background-color: rgba(192, 192, 192, 0.2);
+    border-color: #c0c0c0;
+  }
+
+  .section-pad {
+    @apply py-16 md:py-24;
+  }
+
+  .heading-display {
+    @apply font-display text-4xl font-semibold tracking-tight text-white md:text-5xl lg:text-6xl;
+  }
+
+  .eyebrow {
+    @apply mb-2 text-xs font-semibold uppercase tracking-[0.22em];
+    color: var(--color-glow, #14b8a6);
+  }
+
+  .text-muted {
+    color: rgba(192, 192, 192, 0.8);
+  }
+
+  .link-hover {
+    @apply transition duration-300;
+  }
+
+  .link-hover:hover {
+    color: #14b8a6;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .dark-panel {
+    @apply border backdrop-blur-sm;
+    border-color: rgba(255, 255, 255, 0.1);
+    background-color: #1a1a1a;
+  }
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .image-zoom {
+    @apply transition-transform duration-700 ease-out;
+  }
+
+  .group:hover .image-zoom {
+    @apply scale-110;
   }
 }

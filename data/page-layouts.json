@@ -1,0 +1,644 @@
+{
+  "version": 1,
+  "updated_at": "2026-08-02T01:53:00.000Z",
+  "pages": {
+    "home": {
+      "id": "home",
+      "title": "Home",
+      "seo": {
+        "meta_title": "WISDOM - Restaurant, Spa & Lounge in Limbe, Cameroon",
+        "meta_description": "Experience WISDOM in Limbe: premium restaurant, lounge, and spa. Authentic Cameroonian cuisine, spa rituals, and coastal hospitality."
+      },
+      "sections": [
+        {
+          "id": "sec-1785473265067-6cf1",
+          "label": "Hero",
+          "visible": true,
+          "styles": {
+            "paddingY": "none"
+          },
+          "elements": [
+            {
+              "id": "el-hero",
+              "type": "hero",
+              "label": "Hero",
+              "visible": true,
+              "styles": {
+                "paddingY": "none"
+              }
+            }
+          ]
+        },
+        {
+          "id": "sec-1785473265067-tdft",
+          "label": "Chef specials",
+          "visible": true,
+          "styles": {
+            "paddingY": "lg",
+            "background": ""
+          },
+          "elements": [
+            {
+              "id": "el-chefs",
+              "type": "dynamic_chefs",
+              "label": "Chef specials",
+              "visible": true,
+              "styles": {
+                "paddingY": "md",
+                "textAlign": "left",
+                "maxWidth": "lg"
+              },
+              "eyebrow": "Chef's Special",
+              "title": "Seasonal favourites",
+              "cta": "Full menu",
+              "cta_link": "/restaurant",
+              "body": ""
+            }
+          ]
+        },
+        {
+          "id": "sec-1785473265067-0omx",
+          "label": "Spa glimpse",
+          "visible": true,
+          "styles": {
+            "paddingY": "lg",
+            "background": ""
+          },
+          "elements": [
+            {
+              "id": "el-spa-h",
+              "type": "heading",
+              "label": "Heading",
+              "visible": true,
+              "styles": {
+                "paddingY": "md",
+                "textAlign": "left",
+                "maxWidth": "lg"
+              },
+              "eyebrow": "Spa sessions",
+              "title": "A glimpse into stillness"
+            },
+            {
+              "id": "el-spa-t",
+              "type": "text",
+              "label": "Text",
+              "visible": true,
+              "styles": {
+                "paddingY": "md",
+                "textAlign": "left",
+                "maxWidth": "lg"
+              },
+              "body": "Soft light, teal calm, silver detail — a preview of the WISDOM spa experience."
+            },
+            {
+              "id": "el-spa-btn",
+              "type": "buttons",
+              "label": "Buttons",
+              "visible": true,
+              "styles": {
+                "paddingY": "md",
+                "textAlign": "left",
+                "maxWidth": "lg"
+              },
+              "buttons": [
+                {
+                  "id": "b1",
+                  "label": "Book a session",
+                  "href": "/spa",
+                  "variant": "outline"
+                }
+              ]
+            },
+            {
+              "id": "el-spa-media",
+              "type": "media",
+              "label": "Media",
+              "visible": true,
+              "styles": {
+                "paddingY": "md",
+                "textAlign": "left",
+                "maxWidth": "lg"
+              },
+              "media_url": "/placeholders/experience-spa.png"
+            },
+            {
+              "id": "el-spa-cards",
+              "type": "cards",
+              "label": "Cards",
+              "visible": true,
+              "styles": {
+                "paddingY": "md",
+                "textAlign": "left",
+                "maxWidth": "lg"
+              },
+              "cards": [
+                {
+                  "id": "spa-m1",
+                  "title": "Massage sanctuary",
+                  "body": "",
+                  "note": "Deep calm",
+                  "media_url": "/placeholders/spa-massage.png",
+                  "link_url": "/spa",
+                  "visible": true
+                },
+                {
+                  "id": "spa-m2",
+                  "title": "Facial ritual",
+                  "body": "",
+                  "note": "Glow",
+                  "media_url": "/placeholders/spa-facial.png",
+                  "link_url": "/spa",
+                  "visible": true
+                },
+                {
+                  "id": "spa-m3",
+                  "title": "Sauna steam",
+                  "body": "",
+                  "note": "Release",
+                  "media_url": "/placeholders/spa-sauna.png",
+                  "link_url": "/spa",
+                  "visible": true
+                },
+                {
+                  "id": "spa-m4",
+                  "title": "Nails lounge",
+                  "body": "",
+                  "note": "Polish",
+                  "media_url": "/placeholders/spa-nails.png",
+                  "link_url": "/spa",
+                  "visible": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sec-1785473265067-dxn5",
+          "label": "Shop",
+          "visible": true,
+          "styles": {
+            "paddingY": "lg",
+            "background": ""
+          },
+          "elements": [
+            {
+              "id": "el-shop",
+              "type": "dynamic_products",
+              "label": "Shop products",
+              "visible": true,
+              "styles": {
+                "paddingY": "md",
+                "textAlign": "left",
+                "maxWidth": "lg"
+              },
+              "eyebrow": "Shop",
+              "title": "Take the ritual home",
+              "body": "Spa products used in our treatments — buy via WhatsApp for local pickup or delivery around Limbe.",
+              "cta": "View shop",
+              "cta_link": "/product"
+            }
+          ]
+        },
+        {
+          "id": "sec-1785473265067-dy0n",
+          "label": "Testimonials",
+          "visible": true,
+          "styles": {
+            "paddingY": "lg",
+            "background": ""
+          },
+          "elements": [
+            {
+              "id": "el-voices",
+              "type": "testimonials",
+              "label": "Testimonials",
+              "visible": true,
+              "styles": {
+                "paddingY": "md",
+                "textAlign": "left",
+                "maxWidth": "lg"
+              },
+              "eyebrow": "Voices",
+              "title": "What Limbe says",
+              "body": "Guests who dined, lingered in the lounge, or left the spa restored.",
+              "testimonials": [
+                {
+                  "name": "Aïcha M.",
+                  "role": "Limbe, CM",
+                  "quote": "The ndolè was a revelation. Service felt like family — WISDOM already feels like home.",
+                  "initials": "AM",
+                  "photo_url": "/placeholders/testimonial-aicha.png"
+                },
+                {
+                  "name": "Eric T.",
+                  "role": "Douala, CM",
+                  "quote": "Best lounge energy in the South-West. Cocktails crafted with soul, nights that linger.",
+                  "initials": "ET",
+                  "photo_url": "/placeholders/testimonial-eric.png"
+                },
+                {
+                  "name": "Lena & Paul",
+                  "role": "Paris, FR",
+                  "quote": "The spa massage was a quiet sanctuary after a long coast day. We will be back.",
+                  "initials": "LP",
+                  "photo_url": "/placeholders/testimonial-lena-paul.png"
+                },
+                {
+                  "name": "Grace N.",
+                  "role": "Buea, CM",
+                  "quote": "Facials and nails done with care. The black-and-teal vibe matches the logo — pure luxury.",
+                  "initials": "GN",
+                  "photo_url": "/placeholders/testimonial-grace.png"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sec-1785473265067-j2bk",
+          "label": "Hours",
+          "visible": true,
+          "styles": {
+            "paddingY": "lg",
+            "background": ""
+          },
+          "elements": [
+            {
+              "id": "el-hours",
+              "type": "dynamic_hours",
+              "label": "Hours",
+              "visible": true,
+              "styles": {
+                "paddingY": "md",
+                "textAlign": "left",
+                "maxWidth": "lg"
+              }
+            }
+          ]
+        },
+        {
+          "id": "sec-1785473265067-bltk",
+          "label": "Visit",
+          "visible": true,
+          "styles": {
+            "paddingY": "lg",
+            "background": ""
+          },
+          "elements": [
+            {
+              "id": "el-map",
+              "type": "dynamic_map",
+              "label": "Map",
+              "visible": true,
+              "styles": {
+                "paddingY": "md",
+                "textAlign": "left",
+                "maxWidth": "lg"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "restaurant": {
+      "id": "restaurant",
+      "title": "Restaurant",
+      "seo": {
+        "meta_title": "Restaurant Menu | WISDOM Limbe",
+        "meta_description": "Explore the WISDOM restaurant menu in Limbe — appetizers, mains, desserts, drinks, and lounge classics."
+      },
+      "sections": [
+        {
+          "id": "sec-1785473265067-4fxb",
+          "label": "Restaurant intro",
+          "visible": true,
+          "styles": {
+            "paddingY": "lg",
+            "background": ""
+          },
+          "elements": [
+            {
+              "id": "heading-1785473265067-niy6",
+              "type": "heading",
+              "label": "Heading",
+              "visible": true,
+              "styles": {
+                "paddingY": "md",
+                "textAlign": "left",
+                "maxWidth": "lg"
+              },
+              "eyebrow": "Restaurant & Lounge",
+              "title": "Our Menu"
+            },
+            {
+              "id": "text-1785473265067-5bjd",
+              "type": "text",
+              "label": "Text",
+              "visible": true,
+              "styles": {
+                "paddingY": "md",
+                "textAlign": "left",
+                "maxWidth": "lg"
+              },
+              "body": "Seasonal Cameroonian cuisine and coastal favourites. Order for delivery or dine in — we confirm everything on WhatsApp."
+            }
+          ]
+        }
+      ]
+    },
+    "spa": {
+      "id": "spa",
+      "title": "Spa",
+      "seo": {
+        "meta_title": "Spa Services | WISDOM Limbe",
+        "meta_description": "Book WISDOM spa services in Limbe — hair, nails, body, face treatments, and packages."
+      },
+      "sections": [
+        {
+          "id": "sec-1785473265067-7bqw",
+          "label": "Spa intro",
+          "visible": true,
+          "styles": {
+            "paddingY": "lg",
+            "background": ""
+          },
+          "elements": [
+            {
+              "id": "heading-1785473265067-6ne2",
+              "type": "heading",
+              "label": "Heading",
+              "visible": true,
+              "styles": {
+                "paddingY": "md",
+                "textAlign": "left",
+                "maxWidth": "lg"
+              },
+              "eyebrow": "Spa & Wellness",
+              "title": "Our Services"
+            },
+            {
+              "id": "text-1785473265067-awmj",
+              "type": "text",
+              "label": "Text",
+              "visible": true,
+              "styles": {
+                "paddingY": "md",
+                "textAlign": "left",
+                "maxWidth": "lg"
+              },
+              "body": "From classic cuts to restorative massages and bridal packages. Pricing varies by stylist level — book via WhatsApp."
+            }
+          ]
+        }
+      ]
+    },
+    "product": {
+      "id": "product",
+      "title": "Shop",
+      "seo": {
+        "meta_title": "Shop — Spa Products | WISDOM Limbe",
+        "meta_description": "Buy WISDOM spa products in Limbe — body butters, face oils, scrubs, and hair elixirs via WhatsApp."
+      },
+      "sections": [
+        {
+          "id": "sec-1785473265067-rbpo",
+          "label": "Shop intro",
+          "visible": true,
+          "styles": {
+            "paddingY": "lg",
+            "background": ""
+          },
+          "elements": [
+            {
+              "id": "heading-1785473265067-67i2",
+              "type": "heading",
+              "label": "Heading",
+              "visible": true,
+              "styles": {
+                "paddingY": "md",
+                "textAlign": "left",
+                "maxWidth": "lg"
+              },
+              "eyebrow": "Shop",
+              "title": "Spa products"
+            },
+            {
+              "id": "text-1785473265067-eqs7",
+              "type": "text",
+              "label": "Text",
+              "visible": true,
+              "styles": {
+                "paddingY": "md",
+                "textAlign": "left",
+                "maxWidth": "lg"
+              },
+              "body": "Products used in our treatments — available for local purchase via WhatsApp."
+            }
+          ]
+        }
+      ]
+    },
+    "blog": {
+      "id": "blog",
+      "title": "Blog",
+      "seo": {
+        "meta_title": "Blog | WISDOM Limbe",
+        "meta_description": "Recipes, spa tips, events, and behind-the-scenes stories from WISDOM Limbe."
+      },
+      "sections": [
+        {
+          "id": "sec-1785473265067-hxy6",
+          "label": "Blog intro",
+          "visible": true,
+          "styles": {
+            "paddingY": "lg",
+            "background": ""
+          },
+          "elements": [
+            {
+              "id": "heading-1785473265067-yj5a",
+              "type": "heading",
+              "label": "Heading",
+              "visible": true,
+              "styles": {
+                "paddingY": "md",
+                "textAlign": "left",
+                "maxWidth": "lg"
+              },
+              "eyebrow": "Stories",
+              "title": "Journal"
+            },
+            {
+              "id": "text-1785473265067-lhtt",
+              "type": "text",
+              "label": "Text",
+              "visible": true,
+              "styles": {
+                "paddingY": "md",
+                "textAlign": "left",
+                "maxWidth": "lg"
+              },
+              "body": "Recipes, spa tips, events, promotions, and life behind the WISDOM doors."
+            }
+          ]
+        }
+      ]
+    },
+    "about": {
+      "id": "about",
+      "title": "About",
+      "seo": {
+        "meta_title": "About WISDOM | Restaurant, Spa & Lounge Limbe",
+        "meta_description": "Learn about WISDOM in Limbe — our story, mission, and the people behind the restaurant, lounge, and spa."
+      },
+      "sections": [
+        {
+          "id": "sec-1785473265067-w1au",
+          "label": "About",
+          "visible": true,
+          "styles": {
+            "paddingY": "lg",
+            "background": ""
+          },
+          "elements": [
+            {
+              "id": "heading-1785473265067-qgad",
+              "type": "heading",
+              "label": "Heading",
+              "visible": true,
+              "styles": {
+                "paddingY": "md",
+                "textAlign": "left",
+                "maxWidth": "lg"
+              },
+              "eyebrow": "Our story",
+              "title": "About WISDOM"
+            },
+            {
+              "id": "text-1785473265067-hvju",
+              "type": "text",
+              "label": "Text",
+              "visible": true,
+              "styles": {
+                "paddingY": "md",
+                "textAlign": "left",
+                "maxWidth": "lg"
+              },
+              "body": "A premium hub in Limbe where dining, lounge nights, and spa rituals share one address."
+            },
+            {
+              "id": "heading-1785473265067-sizy",
+              "type": "heading",
+              "label": "Heading",
+              "visible": true,
+              "styles": {
+                "paddingY": "md",
+                "textAlign": "left",
+                "maxWidth": "lg"
+              },
+              "eyebrow": "",
+              "title": "Our story"
+            },
+            {
+              "id": "text-1785473265067-jgzu",
+              "type": "text",
+              "label": "Text",
+              "visible": true,
+              "styles": {
+                "paddingY": "md",
+                "textAlign": "left",
+                "maxWidth": "lg"
+              },
+              "body": "WISDOM was built for Limbe — a place where Cameroonian hospitality meets dark elegance and coastal calm. We bring restaurant, lounge, and spa under one roof so you can arrive curious and leave restored."
+            },
+            {
+              "id": "heading-1785473265067-1rux",
+              "type": "heading",
+              "label": "Heading",
+              "visible": true,
+              "styles": {
+                "paddingY": "md",
+                "textAlign": "left",
+                "maxWidth": "lg"
+              },
+              "eyebrow": "",
+              "title": "Mission"
+            },
+            {
+              "id": "text-1785473265067-f30j",
+              "type": "text",
+              "label": "Text",
+              "visible": true,
+              "styles": {
+                "paddingY": "md",
+                "textAlign": "left",
+                "maxWidth": "lg"
+              },
+              "body": "To craft memorable evenings and restorative sessions with care, craft, and WhatsApp-first convenience for our community."
+            },
+            {
+              "id": "button-1785473265067-lr2e",
+              "type": "button",
+              "label": "Button",
+              "visible": true,
+              "styles": {
+                "paddingY": "md",
+                "textAlign": "left",
+                "maxWidth": "lg"
+              },
+              "title": "Meet the team",
+              "href": "/team",
+              "button_variant": "primary"
+            }
+          ]
+        }
+      ]
+    },
+    "team": {
+      "id": "team",
+      "title": "Team",
+      "seo": {
+        "meta_title": "Our Team | WISDOM Limbe",
+        "meta_description": "Meet the WISDOM Limbe team — spa stylists, therapists, and restaurant hosts behind your experience."
+      },
+      "sections": [
+        {
+          "id": "sec-1785473265067-beew",
+          "label": "Team",
+          "visible": true,
+          "styles": {
+            "paddingY": "lg",
+            "background": ""
+          },
+          "elements": [
+            {
+              "id": "heading-1785473265067-kydg",
+              "type": "heading",
+              "label": "Heading",
+              "visible": true,
+              "styles": {
+                "paddingY": "md",
+                "textAlign": "left",
+                "maxWidth": "lg"
+              },
+              "eyebrow": "The team",
+              "title": "People behind the craft"
+            },
+            {
+              "id": "text-1785473265067-g7cg",
+              "type": "text",
+              "label": "Text",
+              "visible": true,
+              "styles": {
+                "paddingY": "md",
+                "textAlign": "left",
+                "maxWidth": "lg"
+              },
+              "body": "Meet the stylists, therapists, and hosts who shape every WISDOM experience."
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# WISDOM — Restaurant, Spa & Lounge (Limbe)
 
-## Getting Started
+Phase 1 MVP: Next.js 14 + Tailwind + Supabase-ready CMS, WhatsApp-first ordering/booking.
 
-First, run the development server:
+## Design
+
+- **Logo:** `public/branding/wisdom-logo.png`
+- **Palette:** Black `#1A1A1A`, Teal `#0D7377`, Silver `#C0C0C0` / `#E8E8E8`, Cream `#FAF8F5`, WhatsApp `#25D366`
+- **Fonts:** Playfair Display (headings) + Inter (body)
+
+## Quick start
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Admin (demo mode)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Go to [/admin/login](http://localhost:3000/admin/login)
+2. Password: `wisdom-admin` (no Supabase required)
+3. Manage restaurant, spa, and settings (stored in browser localStorage)
 
-## Learn More
+## Environment
 
-To learn more about Next.js, take a look at the following resources:
+Copy `.env.example` → `.env.local`:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+NEXT_PUBLIC_SUPABASE_URL=https://YOUR_PROJECT.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+NEXT_PUBLIC_SITE_URL=https://wisdomlimbe.com
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Without Supabase, the public site uses seeded menu/spa data and the default WhatsApp number `+237 673 949 163`.
 
-## Deploy on Vercel
+## Supabase setup
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Create a project at [supabase.com](https://supabase.com)
+2. Run the SQL in [`supabase/migrations/20260731000000_phase1_schema.sql`](supabase/migrations/20260731000000_phase1_schema.sql) (SQL Editor → Run)
+3. Create an Auth user, then set `profiles.role` to `admin` for that user
+4. Add env vars locally and on Vercel
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deploy to Vercel
+
+```bash
+npm i -g vercel
+vercel login
+vercel
+```
+
+Then set environment variables in the Vercel dashboard (same as `.env.example`), and:
+
+```bash
+vercel --prod
+```
+
+Or connect the GitHub repo in the Vercel UI for automatic deploys.
+
+Custom domain: add `wisdomlimbe.com` (or similar) under Project → Settings → Domains.
+
+## Routes
+
+| Path | Description |
+|------|-------------|
+| `/` | Homepage |
+| `/restaurant` | Menu listing |
+| `/restaurant/[slug]` | Menu item detail |
+| `/spa` | Spa services |
+| `/spa/[slug]` | Service detail |
+| `/admin` | Admin dashboard |
+| `/sitemap.xml` | Sitemap |
+| `/robots.txt` | Robots |
+
+## Phase 2+ (deferred)
+
+Blog, AI chatbot (OpenRouter), product detail galleries, booking calendar, payments (MoMo / Orange / Fapshi), full analytics.

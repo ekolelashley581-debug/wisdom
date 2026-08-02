@@ -1,0 +1,71 @@
+[
+  {
+    "id": "bp-1",
+    "title": "A Night at WISDOM: Coastal Flavours & Lounge Glow",
+    "slug": "night-at-wisdom-coastal-flavours",
+    "excerpt": "From charcoal-grilled barracuda to signature cocktails — how we set the table for Limbe evenings.",
+    "content": "<p>At WISDOM, dinner is never just a meal. It is the soft teal light on silver glassware, the smell of citrus butter on fresh fish, and the first sip of a lounge cocktail as the night opens.</p><p>Our kitchen leans into Cameroonian classics — ndolè, plantain, coastal seafood — plated with modern restraint. Ask for the Chef's Special when you visit; it changes with the season.</p><p>After dinner, step into the lounge. Same menu, deeper drinks list, and a soundtrack that carries until late.</p>",
+    "featured_image": "/placeholders/blog-dining-night.png",
+    "category": "Events",
+    "author": "WISDOM Team",
+    "tags": [
+      "restaurant",
+      "lounge",
+      "limbe"
+    ],
+    "status": "published",
+    "published_at": "2026-06-15T10:00:00.000Z",
+    "scheduled_at": null,
+    "meta_title": "A Night at WISDOM | Limbe Restaurant & Lounge",
+    "meta_description": "Discover coastal Cameroonian dining and lounge nights at WISDOM in Limbe.",
+    "og_image": "/placeholders/blog-dining-night.png",
+    "created_at": "2026-06-10T10:00:00.000Z",
+    "updated_at": "2026-06-15T10:00:00.000Z"
+  },
+  {
+    "id": "bp-2",
+    "title": "Spa Tips: How to Prep for Your First Facial",
+    "slug": "spa-tips-first-facial",
+    "excerpt": "Arrive hydrated, skip heavy makeup, and leave with glow that lasts — our facialists share simple prep advice.",
+    "content": "<p>Your first facial at WISDOM should feel like a reset, not a rush. Arrive a few minutes early, drink water, and skip heavy foundation so our technicians can see your skin clearly.</p><p>We use products available in our shop — including Teal Glow Face Oil — so you can continue the ritual at home.</p><p>Book via WhatsApp with your preferred date and time. Pricing varies by stylist level.</p>",
+    "featured_image": "/placeholders/blog-facial-tips.png",
+    "category": "Spa tips",
+    "author": "Spa Desk",
+    "tags": [
+      "spa",
+      "facial",
+      "tips"
+    ],
+    "status": "published",
+    "published_at": "2026-07-01T09:00:00.000Z",
+    "scheduled_at": null,
+    "meta_title": "Spa Tips: First Facial Prep | WISDOM Limbe",
+    "meta_description": "How to prepare for your first facial at WISDOM spa in Limbe, Cameroon.",
+    "og_image": "/placeholders/blog-facial-tips.png",
+    "created_at": "2026-06-28T09:00:00.000Z",
+    "updated_at": "2026-07-01T09:00:00.000Z"
+  },
+  {
+    "id": "bp-3",
+    "title": "Behind the Scenes: Building the Bride Package",
+    "slug": "behind-scenes-bride-package",
+    "excerpt": "Hair, nails, facial, and calm — why we designed a full bridal morning under one roof.",
+    "content": "<p>Weddings in Limbe move fast. Our Bride Package gathers hair, a makeup-ready facial, manicure, and pedicure so you can stay in one place and breathe.</p><p>Couples often add Couples Day the weekend before — massage, scrub, and sauna for two.</p>",
+    "featured_image": "/placeholders/blog-bride-package.png",
+    "category": "Behind-the-scenes",
+    "author": "WISDOM Team",
+    "tags": [
+      "packages",
+      "bridal",
+      "spa"
+    ],
+    "status": "published",
+    "published_at": "2026-07-20T12:00:00.000Z",
+    "scheduled_at": null,
+    "meta_title": "Bride Package Story | WISDOM Spa Limbe",
+    "meta_description": "Behind the scenes of the WISDOM Bride Package — hair, facial, and nails in Limbe.",
+    "og_image": "/placeholders/blog-bride-package.png",
+    "created_at": "2026-07-18T12:00:00.000Z",
+    "updated_at": "2026-07-20T12:00:00.000Z"
+  }
+]
