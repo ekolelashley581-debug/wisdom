@@ -22,7 +22,7 @@ export default function AdminLoginPage() {
       const supabase = createClient();
       if (supabase) {
         const { error: authError } = await supabase.auth.signInWithPassword({
-          email,
+          email: email.trim(),
           password,
         });
         if (authError) throw authError;
@@ -31,16 +31,21 @@ export default function AdminLoginPage() {
         return;
       }
 
-      // Demo mode (no Supabase): password wisdom-admin or ADMIN_DEMO_PASSWORD
+      // Local fallback only when Supabase env is missing
       const demoPass = "wisdom-admin";
-      if (password === demoPass || (email && password === demoPass)) {
+      if (password === demoPass) {
         demoStore.login();
         router.push("/admin");
         return;
       }
-      setError("Demo mode: use password wisdom-admin (or connect Supabase).");
+      setError("Invalid email or password.");
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Login failed");
+      const message = err instanceof Error ? err.message : "Login failed";
+      setError(
+        message === "Invalid login credentials"
+          ? "Invalid email or password."
+          : message
+      );
     } finally {
       setLoading(false);
     }
@@ -92,9 +97,6 @@ export default function AdminLoginPage() {
             {loading ? "Signing in…" : "Sign in"}
           </button>
         </form>
-        <p className="mt-6 text-center text-xs text-silver-dark">
-          Without Supabase: password <code className="text-secondary-glow">wisdom-admin</code>
-        </p>
       </div>
     </div>
   );

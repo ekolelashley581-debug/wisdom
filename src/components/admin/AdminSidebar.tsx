@@ -23,6 +23,7 @@ import {
   Users,
   PencilRuler,
   Mail,
+  Bell,
 } from "lucide-react";
 import { cn } from "@/lib/format";
 import { demoStore } from "@/lib/demo-store";
@@ -38,6 +39,7 @@ const LINKS = [
   { href: "/admin/staff", label: "Staff", icon: Users },
   { href: "/admin/media", label: "Media", icon: ImageIcon },
   { href: "/admin/messages", label: "Messages", icon: Mail },
+  { href: "/admin/notifications", label: "Notifications", icon: Bell },
   { href: "/admin/pages", label: "Page texts", icon: FileText },
   { href: "/admin/design", label: "Design", icon: Palette },
   { href: "/admin/bookings", label: "Bookings", icon: CalendarDays },

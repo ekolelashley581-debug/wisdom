@@ -6,6 +6,7 @@ import { demoStore } from "@/lib/demo-store";
 import { formatDate } from "@/lib/format";
 import { ItemImagesFields } from "@/components/admin/ItemImagesFields";
 import { loadCatalog, saveCatalog } from "@/lib/admin-catalog";
+import { buildBlogShareWhatsAppLink } from "@/lib/whatsapp";
 
 const emptyPost = (): BlogPost => ({
   id: `bp-${Date.now()}`,
@@ -31,6 +32,7 @@ const emptyPost = (): BlogPost => ({
 export default function AdminBlogPage() {
   const [items, setItems] = useState<BlogPost[]>([]);
   const [editing, setEditing] = useState<BlogPost | null>(null);
+  const [shareUrl, setShareUrl] = useState<string | null>(null);
 
   useEffect(() => {
     loadCatalog<BlogPost>("blog").then((list) => {
@@ -50,6 +52,8 @@ export default function AdminBlogPage() {
   }
 
   function saveItem(item: BlogPost) {
+    const prev = items.find((i) => i.id === item.id);
+    const wasDraft = !prev || prev.status !== "published";
     const slug =
       item.slug ||
       item.title
@@ -70,6 +74,17 @@ export default function AdminBlogPage() {
     const exists = items.some((i) => i.id === saved.id);
     persist(exists ? items.map((i) => (i.id === saved.id ? saved : i)) : [...items, saved]);
     setEditing(null);
+
+    if (saved.status === "published" && wasDraft) {
+      const origin =
+        typeof window !== "undefined" ? window.location.origin : "";
+      setShareUrl(
+        buildBlogShareWhatsAppLink({
+          title: saved.title,
+          url: `${origin}/blog/${saved.slug}`,
+        })
+      );
+    }
   }
 
   return (
@@ -262,6 +277,34 @@ export default function AdminBlogPage() {
               </button>
             </div>
           </form>
+        </div>
+      )}
+
+      {shareUrl && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4">
+          <div className="w-full max-w-md rounded-2xl border border-white/15 bg-surface-elevated p-6">
+            <h2 className="font-display text-2xl text-white">Post published</h2>
+            <p className="mt-2 text-sm text-silver">
+              A notification was logged in Admin. Share it on WhatsApp to announce it.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a
+                href={shareUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-whatsapp !py-2.5 !text-sm"
+              >
+                Share on WhatsApp
+              </a>
+              <button
+                type="button"
+                className="btn-outline"
+                onClick={() => setShareUrl(null)}
+              >
+                Close
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>

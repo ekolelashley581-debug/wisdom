@@ -39,3 +39,16 @@ export function buildWhatsAppLink(payload: WhatsAppPayload): string {
   const text = encodeURIComponent(buildWhatsAppMessage(payload));
   return `https://wa.me/${phone}?text=${text}`;
 }
+
+/** Share a published blog post (opens WhatsApp with a prefilled message). */
+export function buildBlogShareWhatsAppLink(opts: {
+  title: string;
+  url: string;
+  phone?: string;
+}): string {
+  const phone = normalizeWhatsAppNumber(opts.phone ?? "237673949163");
+  const text = encodeURIComponent(
+    `New from WISDOM: ${opts.title}\n\n${opts.url}`
+  );
+  return `https://wa.me/${phone}?text=${text}`;
+}

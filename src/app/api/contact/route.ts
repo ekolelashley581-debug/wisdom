@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { addMessage, readMessages } from "@/lib/contact-store";
+import { addNotification } from "@/lib/notification-store";
 
 export const runtime = "nodejs";
 
@@ -37,6 +38,19 @@ export async function POST(req: Request) {
       subject,
       message,
     });
+
+    try {
+      await addNotification({
+        type: "contact_message",
+        title: `New message from ${name}`,
+        body: subject,
+        href: "/admin/messages",
+        meta: { message_id: item.id },
+      });
+    } catch (notifyErr) {
+      console.error("notification failed", notifyErr);
+    }
+
     return NextResponse.json({ item }, { status: 201 });
   } catch (err) {
     console.error(err);

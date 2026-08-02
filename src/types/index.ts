@@ -311,6 +311,23 @@ export interface ActivityLogEntry {
   created_at: string;
 }
 
+export type AdminNotificationType =
+  | "contact_message"
+  | "blog_published"
+  | "content_updated"
+  | "system";
+
+export interface AdminNotification {
+  id: string;
+  type: AdminNotificationType;
+  title: string;
+  body: string;
+  href?: string;
+  read: boolean;
+  created_at: string;
+  meta?: Record<string, string>;
+}
+
 export interface MediaAsset {
   id: string;
   url: string;

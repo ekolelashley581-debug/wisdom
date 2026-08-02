@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { Moon, Sun } from "lucide-react";
 import { AdminSidebar } from "@/components/admin/AdminSidebar";
+import { AdminNotifications } from "@/components/admin/AdminNotifications";
 import { demoStore } from "@/lib/demo-store";
 import { createClient } from "@/lib/supabase/client";
 import { cn } from "@/lib/format";
@@ -79,6 +80,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
       <div className="flex-1 overflow-auto">
         <div className="flex items-center justify-end gap-2 border-b border-white/10 px-6 py-3">
           <span className="text-xs text-silver-mute">Role: {demoStore.getRole()}</span>
+          <AdminNotifications />
           <button
             type="button"
             onClick={toggleTheme}
