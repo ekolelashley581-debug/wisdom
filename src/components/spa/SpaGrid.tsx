@@ -6,16 +6,14 @@ import type { Category, SpaService } from "@/types";
 import { formatPrice, cn } from "@/lib/format";
 import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
 import { thumbSrc } from "@/lib/media-src";
-import { WhatsAppCTA } from "@/components/ui/WhatsAppCTA";
 
 export function SpaGrid({
   services,
   categories,
-  phone,
 }: {
   services: SpaService[];
   categories: Category[];
-  phone: string;
+  phone?: string;
 }) {
   const parents = categories
     .filter((c) => !c.parent_id)
@@ -95,14 +93,12 @@ export function SpaGrid({
               </p>
               <p className="mt-1 text-xs text-silver-dark">{service.duration}</p>
               <div className="mt-4">
-                <WhatsAppCTA
-                  type="booking"
-                  phone={phone}
-                  itemName={service.name}
-                  date="[Date]"
-                  time="[Time]"
+                <Link
+                  href={`/spa/${service.slug}#book`}
                   className="btn-whatsapp !py-2 !text-xs"
-                />
+                >
+                  Book Now
+                </Link>
               </div>
             </div>
           </article>

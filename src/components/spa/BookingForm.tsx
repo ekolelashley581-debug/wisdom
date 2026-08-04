@@ -54,6 +54,10 @@ export function BookingForm({
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
+    if (!name.trim() || !customerPhone.trim()) {
+      alert("Name and WhatsApp number are required.");
+      return;
+    }
     const booking = {
       id: `bk-${Date.now()}`,
       service_name: service.name,
@@ -61,14 +65,40 @@ export function BookingForm({
       stylist_level: level,
       date,
       time,
-      customer_name: name || "Guest",
-      customer_phone: customerPhone,
+      customer_name: name.trim(),
+      customer_phone: customerPhone.trim(),
       notes,
       status: "pending" as const,
       created_at: new Date().toISOString(),
       cancelled_at: null,
     };
+    void persistAndOpen(booking);
+  }
+
+  async function persistAndOpen(booking: {
+    id: string;
+    service_name: string;
+    service_slug: string;
+    stylist_level: "junior" | "senior" | "master";
+    date: string;
+    time: string;
+    customer_name: string;
+    customer_phone: string;
+    notes: string;
+    status: "pending";
+    created_at: string;
+    cancelled_at: null;
+  }) {
     demoStore.addBooking(booking);
+    try {
+      await fetch("/api/ops", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ kind: "booking", item: booking }),
+      });
+    } catch {
+      /* local fallback already saved */
+    }
     trackEvent({
       type: "booking_start",
       label: service.name,
@@ -159,7 +189,8 @@ export function BookingForm({
             value={name}
             onChange={(e) => setName(e.target.value)}
             className="mt-1 w-full rounded-xl border border-white/15 bg-primary px-3 py-2 text-sm text-white"
-            placeholder="Optional"
+            placeholder="Required"
+            required
           />
         </div>
         <div>
@@ -171,6 +202,7 @@ export function BookingForm({
             onChange={(e) => setCustomerPhone(e.target.value)}
             className="mt-1 w-full rounded-xl border border-white/15 bg-primary px-3 py-2 text-sm text-white"
             placeholder="+237…"
+            required
           />
         </div>
       </div>

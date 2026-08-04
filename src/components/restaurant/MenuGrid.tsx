@@ -6,16 +6,14 @@ import type { Category, MenuItem } from "@/types";
 import { formatPrice, cn } from "@/lib/format";
 import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
 import { thumbSrc } from "@/lib/media-src";
-import { WhatsAppCTA } from "@/components/ui/WhatsAppCTA";
 
 export function MenuGrid({
   items,
   categories,
-  phone,
 }: {
   items: MenuItem[];
   categories: Category[];
-  phone: string;
+  phone?: string;
 }) {
   const parents = categories
     .filter((c) => !c.parent_id)
@@ -127,12 +125,12 @@ export function MenuGrid({
               </div>
               <p className="mt-2 line-clamp-2 text-sm text-silver-mute">{item.description}</p>
               <div className="mt-4 flex flex-wrap items-center gap-2">
-                <WhatsAppCTA
-                  type="order"
-                  phone={phone}
-                  itemName={item.name}
+                <Link
+                  href={`/restaurant/${item.slug}#order`}
                   className="btn-whatsapp !py-2 !text-xs"
-                />
+                >
+                  Order
+                </Link>
                 <Link
                   href={`/restaurant/${item.slug}`}
                   className="text-xs font-semibold text-secondary-glow hover:underline"

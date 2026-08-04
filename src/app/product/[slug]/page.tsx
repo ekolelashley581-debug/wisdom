@@ -53,7 +53,15 @@ export default async function ProductDetailPage({ params }: Props) {
             <p className="mt-6 leading-relaxed text-silver-mute">
               {product.description}
             </p>
-            <ProductPurchase product={product} phone={settings.whatsapp_number} />
+            <div id="order">
+              <ProductPurchase
+                product={product}
+                phone={settings.whatsapp_number}
+                deliveryFeeBase={settings.delivery_fee_base ?? 1000}
+                deliveryFeePerKm={settings.delivery_fee_per_km ?? 200}
+                minOrder={settings.min_order ?? 0}
+              />
+            </div>
             <Link href="/product" className="btn-outline mt-6 inline-flex">
               Back to Shop
             </Link>

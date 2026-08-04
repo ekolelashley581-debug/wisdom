@@ -1,15 +1,17 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { MapPin, Navigation, Route } from "lucide-react";
+import { MapPin, Navigation, Route, Search } from "lucide-react";
 import type { SiteSettings } from "@/types";
 import { nearbyLandmarks, WISDOM_MAPS } from "@/data/seed";
 import { cn } from "@/lib/format";
 
 type Spot = (typeof nearbyLandmarks)[number];
+type Origin = { name: string; query: string; tip?: string; distance?: string };
 
 export function NearbyAndMap({ settings }: { settings: SiteSettings }) {
-  const [active, setActive] = useState<Spot | null>(null);
+  const [active, setActive] = useState<Origin | null>(null);
+  const [search, setSearch] = useState("");
 
   const placeEmbed = WISDOM_MAPS.embedUrl;
   const destination = WISDOM_MAPS.destinationQuery;
@@ -30,13 +32,34 @@ export function NearbyAndMap({ settings }: { settings: SiteSettings }) {
       )}&travelmode=driving`;
 
   function selectSpot(spot: Spot) {
-    setActive(spot);
+    setActive({
+      name: spot.name,
+      query: spot.query,
+      tip: spot.tip,
+      distance: spot.distance,
+    });
+    scrollToMap();
+  }
+
+  function scrollToMap() {
     requestAnimationFrame(() => {
       document.getElementById("find-us")?.scrollIntoView({
         behavior: "smooth",
         block: "start",
       });
     });
+  }
+
+  function submitSearch(e: React.FormEvent) {
+    e.preventDefault();
+    const q = search.trim();
+    if (!q) return;
+    setActive({
+      name: q,
+      query: q.includes("Limbe") || q.includes("Cameroon") ? q : `${q}, Limbe, Cameroon`,
+      tip: "Custom starting point from your search",
+    });
+    scrollToMap();
   }
 
   return (
@@ -47,10 +70,29 @@ export function NearbyAndMap({ settings }: { settings: SiteSettings }) {
           <h2 className="heading-display mb-4 !text-4xl md:!text-5xl">
             What&apos;s nearby
           </h2>
-          <p className="mb-10 max-w-xl text-muted">
-            Tap a landmark to open directions to WISDOM — your starting point becomes
-            the route origin on the map.
+          <p className="mb-6 max-w-xl text-muted">
+            Search your location or tap a landmark — we show the route to WISDOM on the
+            map.
           </p>
+
+          <form onSubmit={submitSearch} className="mb-10 flex max-w-xl gap-2">
+            <div className="relative flex-1">
+              <Search
+                size={16}
+                className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-silver-dark"
+              />
+              <input
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Enter your location (e.g. Down Beach, Mile 4…)"
+                className="w-full rounded-xl border border-white/15 bg-surface-elevated py-3 pl-10 pr-3 text-sm text-white outline-none focus:border-secondary"
+              />
+            </div>
+            <button type="submit" className="btn-primary !px-5 !py-3 !text-sm">
+              Show route
+            </button>
+          </form>
+
           <ul className="grid gap-4 sm:grid-cols-2 md:grid-cols-4">
             {nearbyLandmarks.map((spot) => {
               const selected = active?.name === spot.name;
@@ -108,10 +150,14 @@ export function NearbyAndMap({ settings }: { settings: SiteSettings }) {
                 <p className="text-sm font-semibold text-white">
                   Route from {active.name} → {WISDOM_MAPS.placeName}
                 </p>
-                <p className="mt-1 text-sm text-silver-mute">{active.tip}</p>
-                <p className="mt-2 text-xs text-secondary-glow">
-                  About {active.distance} by road · map below shows the path
-                </p>
+                {active.tip && (
+                  <p className="mt-1 text-sm text-silver-mute">{active.tip}</p>
+                )}
+                {active.distance && (
+                  <p className="mt-2 text-xs text-secondary-glow">
+                    About {active.distance} by road · map below shows the path
+                  </p>
+                )}
                 <button
                   type="button"
                   onClick={() => setActive(null)}

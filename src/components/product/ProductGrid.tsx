@@ -4,15 +4,13 @@ import Link from "next/link";
 import type { SpaProduct } from "@/types";
 import { formatPrice } from "@/lib/format";
 import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
-import { WhatsAppCTA } from "@/components/ui/WhatsAppCTA";
 import { thumbSrc } from "@/lib/media-src";
 
 export function ProductGrid({
   products,
-  phone,
 }: {
   products: SpaProduct[];
-  phone: string;
+  phone?: string;
 }) {
   return (
     <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -37,15 +35,12 @@ export function ProductGrid({
               from {formatPrice(product.price)}
             </p>
             <div className="mt-auto flex flex-wrap gap-2 pt-4">
-              <WhatsAppCTA
-                type="buy"
-                phone={phone}
-                itemName={product.name}
-                size={product.sizes[0]?.label}
-                quantity={1}
-                label="Buy"
+              <Link
+                href={`/product/${product.slug}#order`}
                 className="btn-whatsapp !py-2 !text-xs"
-              />
+              >
+                Order
+              </Link>
               <Link
                 href={`/product/${product.slug}`}
                 className="text-xs font-semibold text-secondary-glow hover:underline"

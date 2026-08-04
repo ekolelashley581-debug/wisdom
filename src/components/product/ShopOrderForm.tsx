@@ -1,35 +1,41 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { MenuItem } from "@/types";
+import type { SpaProduct } from "@/types";
 import { formatPrice } from "@/lib/format";
 import { normalizeWhatsAppNumber } from "@/lib/whatsapp";
 import { trackEvent } from "@/lib/analytics";
 
-export function DeliveryOrderForm({
-  item,
+export function ShopOrderForm({
+  product,
   phone,
   deliveryFeeBase = 1000,
   deliveryFeePerKm = 200,
-  minOrder = 5000,
+  minOrder = 0,
 }: {
-  item: MenuItem;
+  product: SpaProduct;
   phone: string;
   deliveryFeeBase?: number;
   deliveryFeePerKm?: number;
   minOrder?: number;
 }) {
+  const [size, setSize] = useState(product.sizes[0]?.label ?? "Standard");
   const [qty, setQty] = useState(1);
-  const [fulfillment, setFulfillment] = useState<"pickup" | "delivery">("delivery");
+  const [fulfillment, setFulfillment] = useState<"pickup" | "delivery">("pickup");
   const [km, setKm] = useState(3);
   const [name, setName] = useState("");
   const [customerPhone, setCustomerPhone] = useState("");
   const [address, setAddress] = useState("");
   const [notes, setNotes] = useState("");
-  const [payment, setPayment] = useState<"momo" | "orange" | "cash" | "ask">("ask");
+  const [payment, setPayment] = useState<"ask" | "momo" | "orange" | "cash">("ask");
   const [sending, setSending] = useState(false);
 
-  const subtotal = useMemo(() => item.price * qty, [item.price, qty]);
+  const unitPrice = useMemo(() => {
+    const match = product.sizes.find((s) => s.label === size);
+    return match?.price ?? product.price;
+  }, [product, size]);
+
+  const subtotal = unitPrice * qty;
   const deliveryFee =
     fulfillment === "delivery"
       ? deliveryFeeBase + Math.ceil(Math.max(0, km)) * deliveryFeePerKm
@@ -53,18 +59,21 @@ export function DeliveryOrderForm({
 
     setSending(true);
     const order = {
-      id: `dl-${Date.now()}`,
-      items: [{ name: item.name, quantity: qty, price: item.price }],
-      customer_name: name.trim(),
-      customer_phone: customerPhone.trim(),
-      address:
-        fulfillment === "delivery" ? address.trim() : "Pickup / dine-in at WISDOM",
-      notes,
+      id: `so-${Date.now()}`,
+      product_name: product.name,
+      product_slug: product.slug,
+      size,
+      quantity: qty,
+      unit_price: unitPrice,
       fulfillment,
       delivery_km: fulfillment === "delivery" ? km : 0,
       delivery_fee: deliveryFee,
       subtotal,
       total,
+      customer_name: name.trim(),
+      customer_phone: customerPhone.trim(),
+      address: fulfillment === "delivery" ? address.trim() : "Pickup at WISDOM shop",
+      notes,
       status: "new" as const,
       payment_method:
         payment === "ask" ? ("whatsapp" as const) : (payment as "momo" | "orange" | "cash"),
@@ -77,33 +86,45 @@ export function DeliveryOrderForm({
       await fetch("/api/ops", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ kind: "delivery", item: order }),
+        body: JSON.stringify({ kind: "shop", item: order }),
       });
     } catch {
-      /* continue */
+      /* still open WhatsApp */
     }
 
     trackEvent({
       type: "order_start",
-      label: item.name,
-      path: `/restaurant/${item.slug}`,
-      meta: { qty: String(qty), fulfillment, payment },
+      label: product.name,
+      path: `/product/${product.slug}`,
+      meta: { fulfillment, qty: String(qty) },
     });
 
     const payNote =
       payment === "momo"
-        ? "\nPayment preference: MTN MoMo"
+        ? "Payment preference: MTN MoMo"
         : payment === "orange"
-          ? "\nPayment preference: Orange Money"
+          ? "Payment preference: Orange Money"
           : payment === "cash"
-            ? "\nPayment preference: Cash"
-            : "\nPayment: arrange on WhatsApp (MoMo / Orange / Cash)";
+            ? "Payment preference: Cash"
+            : "Payment: arrange on WhatsApp";
 
-    const msg = `Hi WISDOM! I'd like to order ${item.name} x${qty} (${fulfillment}).\nName: ${order.customer_name}\nPhone: ${customerPhone}\nAddress: ${order.address}${
+    const msg = [
+      `Hi WISDOM! Shop order:`,
+      `${product.name} (${size}) x${qty}`,
+      `Fulfillment: ${fulfillment}`,
       fulfillment === "delivery"
-        ? `\nDistance ~${km} km\nDelivery fee: ${deliveryFee.toLocaleString()} XAF`
-        : ""
-    }\nNotes: ${notes || "—"}\nSubtotal: ${subtotal.toLocaleString()} XAF\nTotal: ${total.toLocaleString()} XAF${payNote}\nOrder ref: ${order.id}`;
+        ? `Address: ${order.address}\nDistance ~${km} km\nDelivery fee: ${deliveryFee.toLocaleString()} XAF`
+        : `Collect in shop`,
+      `Name: ${order.customer_name}`,
+      `Phone: ${order.customer_phone}`,
+      `Subtotal: ${subtotal.toLocaleString()} XAF`,
+      `Total: ${total.toLocaleString()} XAF`,
+      payNote,
+      notes ? `Notes: ${notes}` : null,
+      `Order ref: ${order.id}`,
+    ]
+      .filter(Boolean)
+      .join("\n");
 
     window.open(
       `https://wa.me/${normalizeWhatsAppNumber(phone)}?text=${encodeURIComponent(msg)}`,
@@ -118,14 +139,38 @@ export function DeliveryOrderForm({
       onSubmit={submit}
       className="mt-8 space-y-4 rounded-2xl border border-white/10 bg-surface-elevated p-5"
     >
-      <h2 className="font-display text-xl text-white">Order this dish</h2>
+      <h2 className="font-display text-xl text-white">Place shop order</h2>
       <p className="text-sm text-silver-mute">
-        Fill the form first — then send on WhatsApp. Payment is confirmed in chat.
+        Fill this form, then confirm on WhatsApp. Choose pickup or delivery.
       </p>
 
       <div>
-        <label className="text-xs uppercase text-silver-dark">Quantity</label>
-        <div className="mt-1 inline-flex items-center gap-3 rounded-full border border-white/15 px-3 py-1.5">
+        <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-silver-dark">
+          Size
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {product.sizes.map((s) => (
+            <button
+              key={s.label}
+              type="button"
+              onClick={() => setSize(s.label)}
+              className={`rounded-full border px-4 py-2 text-sm transition ${
+                size === s.label
+                  ? "border-secondary-glow bg-secondary/20 text-secondary-glow"
+                  : "border-white/15 text-silver-mute hover:border-secondary"
+              }`}
+            >
+              {s.label} · {formatPrice(s.price)}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-silver-dark">
+          Quantity
+        </p>
+        <div className="inline-flex items-center gap-3 rounded-full border border-white/15 px-3 py-1.5">
           <button type="button" onClick={() => setQty((q) => Math.max(1, q - 1))}>
             −
           </button>
@@ -141,7 +186,7 @@ export function DeliveryOrderForm({
         <div className="flex flex-wrap gap-2">
           {(
             [
-              ["pickup", "Pickup / dine-in"],
+              ["pickup", "Collect in shop"],
               ["delivery", "Delivery"],
             ] as const
           ).map(([val, label]) => (
@@ -161,6 +206,36 @@ export function DeliveryOrderForm({
         </div>
       </div>
 
+      {fulfillment === "delivery" && (
+        <div className="space-y-3 rounded-xl border border-white/10 bg-primary/40 p-3">
+          <input
+            className="w-full rounded-xl border border-white/15 bg-primary px-3 py-2 text-sm"
+            placeholder="Delivery address in Limbe"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            required
+          />
+          <div>
+            <label className="text-xs uppercase text-silver-dark">
+              Approx. distance (km)
+            </label>
+            <input
+              type="number"
+              min={1}
+              max={30}
+              step={1}
+              value={km}
+              onChange={(e) => setKm(Number(e.target.value) || 1)}
+              className="mt-1 w-full rounded-xl border border-white/15 bg-primary px-3 py-2 text-sm"
+            />
+            <p className="mt-1 text-xs text-silver-dark">
+              Fee = {formatPrice(deliveryFeeBase)} + {formatPrice(deliveryFeePerKm)}
+              /km
+            </p>
+          </div>
+        </div>
+      )}
+
       <div className="grid gap-3 sm:grid-cols-2">
         <input
           className="rounded-xl border border-white/15 bg-primary px-3 py-2 text-sm"
@@ -177,48 +252,16 @@ export function DeliveryOrderForm({
           required
         />
       </div>
-
-      {fulfillment === "delivery" && (
-        <div className="space-y-3">
-          <input
-            className="w-full rounded-xl border border-white/15 bg-primary px-3 py-2 text-sm"
-            placeholder="Delivery address in Limbe *"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            required
-          />
-          <div>
-            <label className="text-xs uppercase text-silver-dark">
-              Approx. distance (km)
-            </label>
-            <input
-              type="number"
-              min={1}
-              max={30}
-              value={km}
-              onChange={(e) => setKm(Number(e.target.value) || 1)}
-              className="mt-1 w-full rounded-xl border border-white/15 bg-primary px-3 py-2 text-sm"
-            />
-            <p className="mt-1 text-xs text-silver-dark">
-              Fee = {formatPrice(deliveryFeeBase)} + {formatPrice(deliveryFeePerKm)}/km
-              {minOrder > 0 ? ` · min order ${formatPrice(minOrder)}` : ""}
-            </p>
-          </div>
-        </div>
-      )}
-
       <textarea
         className="w-full rounded-xl border border-white/15 bg-primary px-3 py-2 text-sm"
         rows={2}
-        placeholder="Special instructions"
+        placeholder="Notes (optional)"
         value={notes}
         onChange={(e) => setNotes(e.target.value)}
       />
 
       <div>
-        <p className="mb-2 text-xs uppercase text-silver-dark">
-          Preferred payment (via WhatsApp)
-        </p>
+        <p className="mb-2 text-xs uppercase text-silver-dark">Preferred payment</p>
         <div className="flex flex-wrap gap-2">
           {(
             [

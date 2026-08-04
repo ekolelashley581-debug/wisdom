@@ -5,6 +5,7 @@ import {
   writeCatalog,
 } from "@/lib/content-store";
 import { addNotification } from "@/lib/notification-store";
+import { readSubscribers } from "@/lib/ops-store";
 import type { BlogPost } from "@/types";
 
 export const runtime = "nodejs";
@@ -51,11 +52,14 @@ export async function PUT(req: Request) {
       });
 
       for (const post of newlyPublished) {
+        const subs = (await readSubscribers()).filter((s) => s.active);
         await addNotification({
           type: "blog_published",
           title: "Blog post published",
-          body: `"${post.title || "Untitled"}" is now live`,
-          href: post.slug ? `/blog/${post.slug}` : "/admin/blog",
+          body: `"${post.title || "Untitled"}" is now live · ${subs.length} subscriber${
+            subs.length === 1 ? "" : "s"
+          } to notify`,
+          href: "/admin/ops",
           meta: { post_id: post.id, slug: post.slug || "" },
         });
       }

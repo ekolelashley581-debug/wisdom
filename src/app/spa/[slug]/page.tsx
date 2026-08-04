@@ -124,7 +124,9 @@ export default async function SpaServicePage({ params }: Props) {
               </div>
             )}
 
-            <BookingForm service={service} phone={settings.whatsapp_number} />
+            <div id="book">
+              <BookingForm service={service} phone={settings.whatsapp_number} />
+            </div>
 
             <Link href="/spa" className="btn-outline mt-6 inline-flex">
               Back to Services

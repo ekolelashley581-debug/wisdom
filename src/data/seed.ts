@@ -18,6 +18,10 @@ export const settings: SiteSettings = {
   email: "hello@wisdomlimbe.com",
   delivery_radius: "Within Limbe city limits (approx. 8 km)",
   min_order: 5000,
+  delivery_fee_base: 1000,
+  delivery_fee_per_km: 200,
+  require_order_forms: true,
+  blog_alerts_enabled: true,
   social_links: {
     facebook: "https://facebook.com",
     instagram: "https://instagram.com",

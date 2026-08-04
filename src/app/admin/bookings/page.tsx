@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import type { SpaBooking, BookingStatus } from "@/types";
-import { demoStore } from "@/lib/demo-store";
 import { formatDate } from "@/lib/format";
 
 const STATUSES: BookingStatus[] = [
@@ -15,19 +14,22 @@ const STATUSES: BookingStatus[] = [
 export default function AdminBookingsPage() {
   const [items, setItems] = useState<SpaBooking[]>([]);
 
-  useEffect(() => {
-    setItems(demoStore.getBookings());
-  }, []);
-
-  function refresh() {
-    setItems(demoStore.getBookings());
+  async function load() {
+    const res = await fetch("/api/ops?kind=bookings");
+    if (!res.ok) return;
+    const data = await res.json();
+    setItems(data.items || []);
   }
+
+  useEffect(() => {
+    void load();
+  }, []);
 
   return (
     <div className="text-silver-light">
       <h1 className="font-display text-3xl text-white">Bookings</h1>
       <p className="mt-1 text-sm text-silver">
-        Spa appointments from the site calendar (WhatsApp-confirmed)
+        Spa appointments from the booking form (WhatsApp-confirmed)
       </p>
 
       <div className="mt-8 space-y-3">
@@ -54,14 +56,21 @@ export default function AdminBookingsPage() {
               <select
                 value={b.status}
                 onChange={(e) => {
-                  demoStore.updateBooking(b.id, {
-                    status: e.target.value as BookingStatus,
-                    cancelled_at:
-                      e.target.value === "cancelled"
-                        ? new Date().toISOString()
-                        : b.cancelled_at,
-                  });
-                  refresh();
+                  void fetch("/api/ops", {
+                    method: "PATCH",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                      kind: "booking",
+                      id: b.id,
+                      patch: {
+                        status: e.target.value as BookingStatus,
+                        cancelled_at:
+                          e.target.value === "cancelled"
+                            ? new Date().toISOString()
+                            : b.cancelled_at,
+                      },
+                    }),
+                  }).then(() => load());
                 }}
                 className="rounded-lg border border-white/15 bg-primary px-2 py-1 text-xs"
               >

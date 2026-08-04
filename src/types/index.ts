@@ -120,6 +120,14 @@ export interface SiteSettings {
   opening_hours: OpeningHours[];
   delivery_radius: string;
   min_order: number;
+  /** Flat delivery fee (XAF) when distance unknown / zone base */
+  delivery_fee_base: number;
+  /** Extra delivery fee per km (XAF) */
+  delivery_fee_per_km: number;
+  /** When true, catalog CTAs go to forms (not direct WhatsApp) */
+  require_order_forms: boolean;
+  /** Show blog subscribe + notify admin on publish */
+  blog_alerts_enabled: boolean;
   social_links: SocialLinks;
   address: string;
   maps_query: string;
@@ -367,12 +375,62 @@ export interface DeliveryOrder {
   customer_phone: string;
   address: string;
   notes: string;
+  /** pickup = collect at venue · delivery = bring to address */
+  fulfillment: "pickup" | "delivery";
+  delivery_km: number;
+  delivery_fee: number;
+  subtotal: number;
   total: number;
   status: DeliveryStatus;
   payment_method: "whatsapp" | "momo" | "orange" | "fapshi" | "cash";
   payment_status: "unpaid" | "pending" | "paid" | "failed";
   created_at: string;
   updated_at: string;
+}
+
+export interface ShopOrder {
+  id: string;
+  product_name: string;
+  product_slug: string;
+  size: string;
+  quantity: number;
+  unit_price: number;
+  fulfillment: "pickup" | "delivery";
+  delivery_km: number;
+  delivery_fee: number;
+  subtotal: number;
+  total: number;
+  customer_name: string;
+  customer_phone: string;
+  address: string;
+  notes: string;
+  status: DeliveryStatus;
+  payment_method: "whatsapp" | "momo" | "orange" | "fapshi" | "cash";
+  payment_status: "unpaid" | "pending" | "paid" | "failed";
+  created_at: string;
+  updated_at: string;
+}
+
+export interface TableReservation {
+  id: string;
+  date: string;
+  time: string;
+  guests: number;
+  customer_name: string;
+  customer_phone: string;
+  notes: string;
+  status: BookingStatus;
+  created_at: string;
+  cancelled_at: string | null;
+}
+
+export interface BlogSubscriber {
+  id: string;
+  name: string;
+  email: string;
+  phone?: string;
+  created_at: string;
+  active: boolean;
 }
 
 export interface AnalyticsEvent {

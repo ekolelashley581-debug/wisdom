@@ -3,7 +3,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
-import { WhatsAppCTA } from "@/components/ui/WhatsAppCTA";
 import { DeliveryOrderForm } from "@/components/restaurant/DeliveryOrderForm";
 import { getMenuItemBySlug, getMenuItems, getSettings } from "@/lib/content";
 import { formatPrice } from "@/lib/format";
@@ -96,21 +95,21 @@ export default async function MenuItemPage({ params }: Props) {
               </div>
             </dl>
 
-            <div className="mt-8 flex flex-wrap gap-3">
-              <WhatsAppCTA
-                type="order"
-                phone={settings.whatsapp_number}
-                itemName={item.name}
-                fulfillment="dine-in"
-                label="Dine-in"
-                className="btn-outline"
-              />
+            <div className="mt-8">
               <Link href="/restaurant" className="btn-outline">
                 Back to Menu
               </Link>
             </div>
 
-            <DeliveryOrderForm item={item} phone={settings.whatsapp_number} />
+            <div id="order">
+              <DeliveryOrderForm
+                item={item}
+                phone={settings.whatsapp_number}
+                deliveryFeeBase={settings.delivery_fee_base ?? 1000}
+                deliveryFeePerKm={settings.delivery_fee_per_km ?? 200}
+                minOrder={settings.min_order ?? 5000}
+              />
+            </div>
           </div>
         </div>
       </div>

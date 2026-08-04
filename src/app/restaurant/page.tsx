@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { MenuGrid } from "@/components/restaurant/MenuGrid";
+import { ReservationForm } from "@/components/restaurant/ReservationForm";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { getCategories, getMenuItems, getPageCopy, getSettings } from "@/lib/content";
 
@@ -33,13 +34,16 @@ export default async function RestaurantPage() {
         <p className="mb-10 max-w-2xl text-muted">{copy.restaurant.body}</p>
         <p className="mb-8 rounded-xl border border-secondary/30 bg-secondary/10 px-4 py-3 text-sm text-silver-light">
           Delivery: {settings.delivery_radius}. Min order{" "}
-          {settings.min_order.toLocaleString("en-US")} XAF.
+          {settings.min_order.toLocaleString("en-US")} XAF. Delivery fee from{" "}
+          {(settings.delivery_fee_base ?? 1000).toLocaleString("en-US")} XAF +{" "}
+          {(settings.delivery_fee_per_km ?? 200).toLocaleString("en-US")} XAF/km.
         </p>
-        <MenuGrid
-          items={items}
-          categories={categories}
-          phone={settings.whatsapp_number}
-        />
+
+        <div className="mb-12">
+          <ReservationForm phone={settings.whatsapp_number} />
+        </div>
+
+        <MenuGrid items={items} categories={categories} />
       </div>
     </div>
   );

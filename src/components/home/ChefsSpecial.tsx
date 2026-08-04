@@ -4,15 +4,13 @@ import type { PageCopy } from "@/types";
 import { formatPrice } from "@/lib/format";
 import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
 import { thumbSrc } from "@/lib/media-src";
-import { WhatsAppCTA } from "@/components/ui/WhatsAppCTA";
 
 export function ChefsSpecial({
   items,
-  phone,
   copy,
 }: {
   items: MenuItem[];
-  phone: string;
+  phone?: string;
   copy: PageCopy["home_chefs"];
 }) {
   if (!items.length) return null;
@@ -63,12 +61,12 @@ export function ChefsSpecial({
                 </div>
                 <p className="mt-2 line-clamp-2 text-sm text-silver-mute">{item.description}</p>
                 <div className="mt-4 opacity-100 transition md:opacity-0 md:group-hover:opacity-100">
-                  <WhatsAppCTA
-                    type="order"
-                    phone={phone}
-                    itemName={item.name}
+                  <Link
+                    href={`/restaurant/${item.slug}#order`}
                     className="btn-whatsapp !py-2 !text-xs"
-                  />
+                  >
+                    Order
+                  </Link>
                 </div>
               </div>
             </article>
