@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { BackToTop } from "@/components/layout/WhatsAppFloat";
 import { Chatbot } from "@/components/chat/Chatbot";
+import { PageViewTracker } from "@/components/analytics/PageViewTracker";
 import type { SiteSettings, SiteDesign } from "@/types";
 
 export function SiteChrome({
@@ -25,6 +26,7 @@ export function SiteChrome({
 
   return (
     <>
+      <PageViewTracker />
       <Header
         logoUrl={design.logo_url}
         restaurantCta={design.restaurant_cta}

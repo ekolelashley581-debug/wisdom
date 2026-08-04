@@ -65,7 +65,7 @@ export function ReservationForm({ phone }: { phone: string }) {
     }
 
     trackEvent({
-      type: "booking_start",
+      type: "reservation_start",
       label: "table_reservation",
       path: "/restaurant",
       meta: { date, time, guests: String(guests) },

@@ -1,49 +1,105 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
-import { demoStore } from "@/lib/demo-store";
-import { getEvents } from "@/lib/analytics";
-import { formatPrice } from "@/lib/format";
+import { VisitorsChart } from "@/components/admin/AnalyticsCharts";
+
+type Summary = {
+  pageViews: number;
+  uniqueVisitors: number;
+  whatsapp: number;
+  bookings: number;
+  orders: number;
+  todayViews: number;
+  todayVisitors: number;
+  todayWa: number;
+};
+
+type DayPoint = {
+  date: string;
+  views: number;
+  visitors: number;
+  wa: number;
+  bookings: number;
+  orders: number;
+};
 
 export default function AdminDashboardPage() {
-  const [stats, setStats] = useState({
-    menu: 0,
-    spa: 0,
-    products: 0,
-    posts: 0,
+  const [summary, setSummary] = useState<Summary>({
+    pageViews: 0,
+    uniqueVisitors: 0,
+    whatsapp: 0,
     bookings: 0,
-    deliveries: 0,
-    waClicks: 0,
+    orders: 0,
+    todayViews: 0,
+    todayVisitors: 0,
+    todayWa: 0,
   });
+  const [byDay, setByDay] = useState<DayPoint[]>([]);
+  const [ops, setOps] = useState({
+    spaBookings: 0,
+    deliveries: 0,
+    shop: 0,
+    reservations: 0,
+    messages: 0,
+  });
+  const [updatedAt, setUpdatedAt] = useState("");
 
-  useEffect(() => {
-    const events = getEvents();
-    setStats({
-      menu: demoStore.getMenu().length,
-      spa: demoStore.getSpa().length,
-      products: demoStore.getProducts().length,
-      posts: demoStore.getBlog().length,
-      bookings: demoStore.getBookings().length,
-      deliveries: demoStore.getDeliveries().length,
-      waClicks: events.filter((e) => e.type === "whatsapp_click").length,
-    });
+  const load = useCallback(async () => {
+    try {
+      const [analytics, opsRes, messages] = await Promise.all([
+        fetch("/api/analytics?days=14").then((r) => r.json()),
+        fetch("/api/ops").then((r) => r.json()),
+        fetch("/api/contact").then((r) => r.json()).catch(() => ({ items: [] })),
+      ]);
+      if (analytics?.summary) setSummary(analytics.summary);
+      if (analytics?.byDay) setByDay(analytics.byDay);
+      setOps({
+        spaBookings: (opsRes.bookings || []).length,
+        deliveries: (opsRes.deliveries || []).length,
+        shop: (opsRes.shop || []).length,
+        reservations: (opsRes.reservations || []).length,
+        messages: (messages.items || []).filter(
+          (m: { status?: string }) => m.status === "new"
+        ).length,
+      });
+      setUpdatedAt(new Date().toLocaleTimeString());
+    } catch {
+      /* ignore */
+    }
   }, []);
 
+  useEffect(() => {
+    void load();
+    const id = window.setInterval(() => void load(), 20000);
+    return () => window.clearInterval(id);
+  }, [load]);
+
   const cards = [
-    { label: "Menu items", value: stats.menu, href: "/admin/restaurant" },
-    { label: "Spa services", value: stats.spa, href: "/admin/spa" },
-    { label: "Bookings", value: stats.bookings, href: "/admin/bookings" },
-    { label: "Deliveries", value: stats.deliveries, href: "/admin/deliveries" },
-    { label: "Products", value: stats.products, href: "/admin/products" },
-    { label: "Blog posts", value: stats.posts, href: "/admin/blog" },
-    { label: "WA clicks", value: stats.waClicks, href: "/admin/analytics" },
+    { label: "Today visitors", value: summary.todayVisitors, href: "/admin/analytics" },
+    { label: "Today views", value: summary.todayViews, href: "/admin/analytics" },
+    { label: "WA clicks", value: summary.whatsapp, href: "/admin/analytics" },
+    { label: "New messages", value: ops.messages, href: "/admin/messages" },
+    { label: "Spa bookings", value: ops.spaBookings, href: "/admin/bookings" },
+    { label: "Food orders", value: ops.deliveries, href: "/admin/deliveries" },
+    { label: "Shop orders", value: ops.shop, href: "/admin/ops" },
+    { label: "Reservations", value: ops.reservations, href: "/admin/ops" },
   ];
 
   return (
     <div className="text-silver-light">
-      <h1 className="font-display text-3xl text-white">Dashboard</h1>
-      <p className="mt-1 text-sm text-silver">Phase 3 control center</p>
+      <div className="flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <h1 className="font-display text-3xl text-white">Dashboard</h1>
+          <p className="mt-1 text-sm text-silver">
+            Live site feedback
+            {updatedAt ? ` · refreshed ${updatedAt}` : ""}
+          </p>
+        </div>
+        <Link href="/admin/analytics" className="btn-outline !text-xs">
+          Full analytics
+        </Link>
+      </div>
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {cards.map((c) => (
@@ -58,25 +114,33 @@ export default function AdminDashboardPage() {
         ))}
       </div>
 
+      <div className="mt-8">
+        <h2 className="mb-3 font-display text-xl text-white">Visitors (14 days)</h2>
+        <VisitorsChart data={byDay} />
+      </div>
+
       <div className="mt-10 rounded-2xl border border-white/10 bg-white/5 p-6">
         <h2 className="font-display text-xl text-white">Quick actions</h2>
         <div className="mt-4 flex flex-wrap gap-3">
-          <Link href="/admin/bookings" className="btn-primary !text-xs">
-            Manage bookings
-          </Link>
-          <Link href="/admin/deliveries" className="btn-primary !text-xs">
-            Manage deliveries
+          <Link href="/admin/ops" className="btn-primary !text-xs">
+            Ops Center
           </Link>
           <Link href="/admin/analytics" className="btn-primary !text-xs">
             Analytics
           </Link>
-          <Link href="/admin/payments" className="btn-outline !text-xs">
-            Payments
+          <Link href="/admin/bookings" className="btn-outline !text-xs">
+            Bookings
+          </Link>
+          <Link href="/admin/deliveries" className="btn-outline !text-xs">
+            Deliveries
+          </Link>
+          <Link href="/admin/messages" className="btn-outline !text-xs">
+            Messages
           </Link>
         </div>
         <p className="mt-6 text-xs text-silver-dark">
-          Min order: {formatPrice(demoStore.getSettings().min_order)}. Payments are
-          preference stubs until MoMo/Orange/Fapshi gateways are connected.
+          Live totals: {summary.uniqueVisitors} visitors · {summary.pageViews} views ·{" "}
+          {summary.orders} order starts · auto-refresh every 20s.
         </p>
       </div>
     </div>

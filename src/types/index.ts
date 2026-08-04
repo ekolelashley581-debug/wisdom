@@ -435,10 +435,16 @@ export interface BlogSubscriber {
 
 export interface AnalyticsEvent {
   id: string;
-  type: "page_view" | "whatsapp_click" | "booking_start" | "order_start";
+  type:
+    | "page_view"
+    | "whatsapp_click"
+    | "booking_start"
+    | "order_start"
+    | "reservation_start";
   label: string;
   path: string;
   meta?: Record<string, string>;
+  visitor_id?: string;
   created_at: string;
 }
 
