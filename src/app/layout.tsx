@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SiteChrome } from "@/components/layout/SiteChrome";
 import { getDesign, getSettings } from "@/lib/content";
 import "./globals.css";
@@ -79,6 +80,7 @@ export default async function RootLayout({
         <SiteChrome settings={settings} design={design}>
           {children}
         </SiteChrome>
+        <SpeedInsights />
       </body>
     </html>
   );
