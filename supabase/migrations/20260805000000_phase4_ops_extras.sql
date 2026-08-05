@@ -94,7 +94,7 @@ create table if not exists public.admin_notifications (
   body text not null default '',
   href text,
   meta jsonb not null default '{}',
-  read boolean not null default false,
+  is_read boolean not null default false,
   created_at timestamptz not null default now()
 );
 
