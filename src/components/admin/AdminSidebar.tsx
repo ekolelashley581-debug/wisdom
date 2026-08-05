@@ -25,6 +25,7 @@ import {
   Mail,
   Bell,
   Workflow,
+  UsersRound,
 } from "lucide-react";
 import { cn } from "@/lib/format";
 import { demoStore } from "@/lib/demo-store";
@@ -33,6 +34,7 @@ import { createClient } from "@/lib/supabase/client";
 const LINKS = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
   { href: "/admin/ops", label: "Ops Center", icon: Workflow },
+  { href: "/admin/users", label: "Users", icon: UsersRound },
   { href: "/admin/editor", label: "Elementor", icon: PencilRuler },
   { href: "/admin/restaurant", label: "Restaurant", icon: UtensilsCrossed },
   { href: "/admin/spa", label: "Spa", icon: Sparkles },
