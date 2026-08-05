@@ -8,7 +8,7 @@ import { ItemImagesFields } from "@/components/admin/ItemImagesFields";
 import { loadCatalog, saveCatalog } from "@/lib/admin-catalog";
 
 const emptyProduct = (): SpaProduct => ({
-  id: `sp-${Date.now()}`,
+  id: crypto.randomUUID(),
   name: "",
   slug: "",
   description: "",
@@ -35,10 +35,20 @@ export default function AdminProductsPage() {
     });
   }, []);
 
-  function persist(next: SpaProduct[]) {
+  async function persist(next: SpaProduct[]) {
     setItems(next);
     demoStore.setProducts(next);
-    void saveCatalog("products", next);
+    try {
+      const data = (await saveCatalog("products", next)) as {
+        items?: SpaProduct[];
+      };
+      if (Array.isArray(data.items)) {
+        setItems(data.items);
+        demoStore.setProducts(data.items);
+      }
+    } catch (err) {
+      alert(err instanceof Error ? err.message : "Failed to save products");
+    }
   }
 
   function saveItem(item: SpaProduct) {

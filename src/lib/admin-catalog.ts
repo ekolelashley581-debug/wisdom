@@ -10,10 +10,13 @@ export async function saveCatalog(
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ section, items }),
   });
+  const data = await res.json().catch(() => ({}));
   if (!res.ok) {
-    throw new Error(`Failed to save ${section}`);
+    throw new Error(
+      (data as { error?: string }).error || `Failed to save ${section}`
+    );
   }
-  return res.json();
+  return data;
 }
 
 export async function loadCatalog<T>(

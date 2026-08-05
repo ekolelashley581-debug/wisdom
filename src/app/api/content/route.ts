@@ -38,8 +38,21 @@ export async function PUT(req: Request) {
     );
   }
 
-  const previous = await readCatalog(section);
-  const items = await writeCatalog(section, body.items);
+  let previous: unknown[] = [];
+  let items: unknown[] = body.items;
+  try {
+    previous = await readCatalog(section);
+    items = await writeCatalog(section, body.items);
+  } catch (err) {
+    console.error(err);
+    return NextResponse.json(
+      {
+        error:
+          err instanceof Error ? err.message : "Failed to save catalog",
+      },
+      { status: 500 }
+    );
+  }
 
   try {
     if (section === "blog") {

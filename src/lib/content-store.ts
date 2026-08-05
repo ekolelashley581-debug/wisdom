@@ -8,8 +8,11 @@ import {
   blogPosts as seedBlog,
 } from "@/data/seed";
 import { seedStaff } from "@/data/staff-seed";
+import { createServiceClient } from "@/lib/supabase/admin";
 
 const DATA_DIR = path.join(process.cwd(), "data");
+const UUID_RE =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
 type CatalogSection = "menu" | "spa" | "products" | "blog" | "staff";
 
@@ -20,6 +23,27 @@ const FILES: Record<CatalogSection, string> = {
   blog: "blog.json",
   staff: "staff.json",
 };
+
+function asUuid(id: string) {
+  return UUID_RE.test(id) ? id : crypto.randomUUID();
+}
+
+function mapProductRow(row: Record<string, unknown>): SpaProduct {
+  return {
+    id: String(row.id),
+    name: String(row.name || ""),
+    slug: String(row.slug || ""),
+    description: String(row.description || ""),
+    sizes: Array.isArray(row.sizes)
+      ? (row.sizes as SpaProduct["sizes"])
+      : [],
+    price: Number(row.price || 0),
+    images: Array.isArray(row.images) ? (row.images as string[]) : [],
+    thumbnail: String(row.thumbnail || ""),
+    status: row.status === "published" ? "published" : "draft",
+    is_available: row.is_available !== false,
+  };
+}
 
 async function ensureDataDir() {
   await fs.mkdir(DATA_DIR, { recursive: true });
@@ -63,11 +87,75 @@ export async function writeSpa(items: SpaService[]) {
 }
 
 export async function readProducts(): Promise<SpaProduct[]> {
+  const admin = createServiceClient();
+  if (admin) {
+    const { data, error } = await admin
+      .from("spa_products")
+      .select("*")
+      .order("updated_at", { ascending: false });
+    if (!error && data) {
+      if (data.length) {
+        return data.map((row) => mapProductRow(row as Record<string, unknown>));
+      }
+      // Empty DB: fall back to seed/file so first load isn't blank
+      const fileItems = await readJsonFile(FILES.products, seedProducts);
+      return fileItems;
+    }
+  }
   return readJsonFile(FILES.products, seedProducts);
 }
 
-export async function writeProducts(items: SpaProduct[]) {
-  await writeJsonFile(FILES.products, items);
+export async function writeProducts(items: SpaProduct[]): Promise<SpaProduct[]> {
+  const normalized = items.map((p) => ({
+    ...p,
+    id: asUuid(p.id),
+    thumbnail: p.thumbnail || "",
+    images: p.images || [],
+    is_available: p.is_available !== false,
+  }));
+
+  const admin = createServiceClient();
+  if (admin) {
+    const rows = normalized.map((p) => ({
+      id: p.id,
+      name: p.name,
+      slug: p.slug,
+      description: p.description || "",
+      sizes: p.sizes,
+      price: p.price,
+      images: p.images,
+      thumbnail: p.thumbnail || "",
+      status: p.status,
+      is_available: p.is_available !== false,
+      updated_at: new Date().toISOString(),
+    }));
+
+    const { data: existing } = await admin.from("spa_products").select("id");
+    const keep = new Set(rows.map((r) => r.id));
+    const toDelete = (existing || [])
+      .map((e) => String(e.id))
+      .filter((id) => !keep.has(id));
+    if (toDelete.length) {
+      const { error: delErr } = await admin
+        .from("spa_products")
+        .delete()
+        .in("id", toDelete);
+      if (delErr) throw new Error(delErr.message);
+    }
+
+    if (rows.length) {
+      const { error } = await admin
+        .from("spa_products")
+        .upsert(rows, { onConflict: "id" });
+      if (error) throw new Error(error.message);
+    }
+
+    await writeJsonFile(FILES.products, normalized);
+    return normalized;
+  }
+
+  await writeJsonFile(FILES.products, normalized);
+  return normalized;
 }
 
 export async function readBlog(): Promise<BlogPost[]> {
@@ -105,21 +193,19 @@ export async function writeCatalog(section: CatalogSection, items: unknown[]) {
   switch (section) {
     case "menu":
       await writeMenu(items as MenuItem[]);
-      break;
+      return items;
     case "spa":
       await writeSpa(items as SpaService[]);
-      break;
+      return items;
     case "products":
-      await writeProducts(items as SpaProduct[]);
-      break;
+      return writeProducts(items as SpaProduct[]);
     case "blog":
       await writeBlog(items as BlogPost[]);
-      break;
+      return items;
     case "staff":
       await writeStaff(items as StaffMember[]);
-      break;
+      return items;
   }
-  return items;
 }
 
 export function isCatalogSection(value: string): value is CatalogSection {

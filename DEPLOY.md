@@ -19,6 +19,7 @@ Follow prompts to link/create the project. Then set env vars:
 npx vercel env add NEXT_PUBLIC_SITE_URL
 npx vercel env add NEXT_PUBLIC_SUPABASE_URL
 npx vercel env add NEXT_PUBLIC_SUPABASE_ANON_KEY
+npx vercel env add SUPABASE_SERVICE_ROLE_KEY
 ```
 
 Production deploy:
@@ -37,13 +38,16 @@ npx vercel --prod
 
 ## Environment variables
 
-| Name | Example | Required |
-|------|---------|----------|
-| `NEXT_PUBLIC_SITE_URL` | `https://wisdomlimbe.com` | Yes (SEO/sitemap) |
-| `NEXT_PUBLIC_SUPABASE_URL` | `https://xxxx.supabase.co` | For live CMS/auth |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | `eyJ...` | For live CMS/auth |
+| Name | Where to get it | Required for |
+|------|-----------------|--------------|
+| `NEXT_PUBLIC_SITE_URL` | Your live URL, e.g. `https://wisdom-ruddy.vercel.app` | SEO / auth redirects |
+| `NEXT_PUBLIC_SUPABASE_URL` | Supabase → Settings → API → Project URL | Login |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase → Settings → API → `anon` `public` key | Login |
+| `SUPABASE_SERVICE_ROLE_KEY` | Supabase → Settings → API → `service_role` secret | Products, images, Users |
 
-Without Supabase keys, the site still works with seed data. Admin demo password: `wisdom-admin`.
+These go in **Vercel → Project → Settings → Environment Variables** (Name + Value only — no `=` in the name).
+
+Admin login uses **email + password** for a user that already exists in Supabase Auth. There is no Google / public sign-up.
 
 ## Custom domain
 

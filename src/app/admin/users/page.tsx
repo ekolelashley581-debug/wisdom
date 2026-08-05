@@ -18,7 +18,7 @@ export default function AdminUsersPage() {
   const [email, setEmail] = useState("");
   const [fullName, setFullName] = useState("");
   const [role, setRole] = useState<"admin" | "editor" | "viewer">("editor");
-  const [method, setMethod] = useState<"invite" | "password">("invite");
+  const [method, setMethod] = useState<"invite" | "password">("password");
   const [password, setPassword] = useState("");
   const [saving, setSaving] = useState(false);
 
@@ -107,7 +107,7 @@ export default function AdminUsersPage() {
     <div className="text-silver-light">
       <h1 className="font-display text-3xl text-white">Users</h1>
       <p className="mt-1 text-sm text-silver">
-        Add team members by email invite or password — they can also sign in with Google
+        Register staff in Supabase — only these accounts can sign in to admin
       </p>
 
       <form
@@ -219,30 +219,19 @@ export default function AdminUsersPage() {
       </div>
 
       <div className="mt-10 rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-xs text-silver-mute">
-        <p className="font-medium text-silver">Google sign-in setup (once)</p>
-        <ol className="mt-2 list-decimal space-y-1 pl-4">
+        <p className="font-medium text-silver">Notes</p>
+        <ul className="mt-2 list-disc space-y-1 pl-4">
+          <li>There is no public sign-up — create accounts here or in Supabase Auth.</li>
           <li>
-            Supabase → Authentication → Providers → enable <strong>Google</strong>
-          </li>
-          <li>Add your Google Cloud OAuth Client ID & Secret</li>
-          <li>
-            Redirect URL:{" "}
-            <code className="text-secondary-glow">
-              https://cotfjdxhvbklqahkmaum.supabase.co/auth/v1/callback
-            </code>
-          </li>
-          <li>
-            Site URL / redirects:{" "}
-            <code className="text-secondary-glow">
-              https://wisdom-ruddy.vercel.app/auth/callback
-            </code>
-          </li>
-          <li>
-            Vercel env:{" "}
+            Vercel needs{" "}
             <code className="text-secondary-glow">SUPABASE_SERVICE_ROLE_KEY</code>{" "}
-            (for adding users)
+            for adding users and uploading media.
           </li>
-        </ol>
+          <li>
+            In Supabase → Authentication → Providers → Email, turn off “Enable sign
+            ups” so only registered users can sign in.
+          </li>
+        </ul>
       </div>
     </div>
   );
