@@ -174,19 +174,69 @@ export default function AdminPagesPage() {
 
       <form onSubmit={save} className="mt-8 max-w-2xl space-y-6">
         {tab === "home" && (
-          <div className="rounded-2xl border border-secondary/30 bg-secondary/5 p-6 space-y-3">
-            <h2 className="font-display text-xl text-white">Homepage layout</h2>
+          <div className="space-y-8">
             <p className="text-sm text-silver-mute">
-              Cards, links, show/hide sections, testimonials, and videos are managed in the
-              Home builder (Elementor-style).
+              Hero image, logo & colors are under Design. Edit homepage section copy below.
             </p>
-            <a href="/admin/builder" className="btn-primary inline-flex !text-xs">
-              Open Home builder
-            </a>
-            <p className="text-xs text-silver-dark">
-              Hero text, logo & colors stay in Design. Use this Page texts screen for Restaurant,
-              Spa, Shop, Blog, About & SEO.
-            </p>
+            <div className="space-y-3">
+              <h2 className="font-display text-xl text-white">Discover</h2>
+              <SectionFields
+                value={copy.home_discover}
+                onChange={(v) =>
+                  setCopy({ ...copy, home_discover: { ...copy.home_discover, ...v } })
+                }
+                showCta
+              />
+            </div>
+            <div className="space-y-3">
+              <h2 className="font-display text-xl text-white">Chef&apos;s specials</h2>
+              <SectionFields
+                value={copy.home_chefs}
+                onChange={(v) =>
+                  setCopy({ ...copy, home_chefs: { ...copy.home_chefs, ...v } })
+                }
+                showCta
+              />
+            </div>
+            <div className="space-y-3">
+              <h2 className="font-display text-xl text-white">Spa glimpse</h2>
+              <SectionFields
+                value={copy.home_spa_glimpse}
+                onChange={(v) =>
+                  setCopy({
+                    ...copy,
+                    home_spa_glimpse: { ...copy.home_spa_glimpse, ...v },
+                  })
+                }
+                showCta
+              />
+            </div>
+            <div className="space-y-3">
+              <h2 className="font-display text-xl text-white">Shop</h2>
+              <SectionFields
+                value={copy.home_shop}
+                onChange={(v) =>
+                  setCopy({ ...copy, home_shop: { ...copy.home_shop, ...v } })
+                }
+                showCta
+              />
+            </div>
+            <div className="space-y-3">
+              <h2 className="font-display text-xl text-white">Testimonials</h2>
+              <SectionFields
+                value={copy.home_testimonials}
+                onChange={(v) =>
+                  setCopy({
+                    ...copy,
+                    home_testimonials: { ...copy.home_testimonials, ...v },
+                  })
+                }
+              />
+            </div>
+            <SeoBlock
+              value={copy.home_seo}
+              onChange={(home_seo) => setCopy({ ...copy, home_seo })}
+            />
           </div>
         )}
 

@@ -40,20 +40,6 @@ if (copy.home_testimonials?.items) {
   fs.writeFileSync(copyPath, JSON.stringify(copy, null, 2) + "\n");
 }
 
-const layoutsPath = path.join(root, "data/page-layouts.json");
-const layouts = JSON.parse(fs.readFileSync(layoutsPath, "utf8"));
-function walk(o) {
-  if (Array.isArray(o)) return o.forEach(walk);
-  if (o && typeof o === "object") {
-    if (Array.isArray(o.testimonials)) {
-      o.testimonials = patchTestimonials(o.testimonials);
-    }
-    Object.values(o).forEach(walk);
-  }
-}
-walk(layouts);
-fs.writeFileSync(layoutsPath, JSON.stringify(layouts, null, 2) + "\n");
-
 const configPath = path.join(root, "data/site-config.json");
 const config = JSON.parse(fs.readFileSync(configPath, "utf8"));
 config.design = {

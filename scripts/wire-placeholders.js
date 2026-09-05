@@ -397,28 +397,6 @@ if (config.design) {
   writeJson("data/site-config.json", config);
 }
 
-const layouts = readJson("data/page-layouts.json", null);
-if (layouts) {
-  const mediaById = {
-    "discover-restaurant": P("experience-restaurant.png"),
-    "discover-spa": P("experience-spa.png"),
-    "el-spa-media": P("experience-spa.png"),
-    "spa-m1": P("spa-massage.png"),
-    "spa-m2": P("spa-facial.png"),
-    "spa-m3": P("spa-sauna.png"),
-    "spa-m4": P("spa-nails.png"),
-  };
-  (function walk(o) {
-    if (Array.isArray(o)) return o.forEach(walk);
-    if (o && typeof o === "object") {
-      if (o.id && mediaById[o.id]) o.media_url = mediaById[o.id];
-      Object.values(o).forEach(walk);
-    }
-  })(layouts);
-  layouts.updated_at = new Date().toISOString();
-  writeJson("data/page-layouts.json", layouts);
-}
-
 const files = fs
   .readdirSync(path.join(root, "public/placeholders"))
   .filter((f) => f.endsWith(".png"));

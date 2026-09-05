@@ -63,11 +63,6 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
   }
 
   const light = theme === "light";
-  const isEditor = pathname.startsWith("/admin/editor");
-
-  if (isEditor) {
-    return <div className="min-h-screen bg-[#0c0f12]">{children}</div>;
-  }
 
   return (
     <div

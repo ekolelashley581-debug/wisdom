@@ -8,42 +8,52 @@ import {
   getSettings,
   getSpaProducts,
   getDesign,
+  getPageCopy,
 } from "@/lib/content";
-import { getLayoutPage } from "@/lib/page-builder-store";
-import { PublicPageRenderer } from "@/components/builder/PublicPageRenderer";
+import { Hero } from "@/components/home/Hero";
+import { WisdomTriad } from "@/components/home/WisdomTriad";
+import { ExperienceSplit } from "@/components/home/ExperienceSplit";
+import { ChefsSpecial } from "@/components/home/ChefsSpecial";
+import { SpaGlimpse } from "@/components/home/SpaGlimpse";
+import { ShopGlimpse } from "@/components/home/ShopGlimpse";
+import { Testimonials } from "@/components/home/Testimonials";
+import { HoursStrip } from "@/components/home/HoursStrip";
+import { NearbyAndMap } from "@/components/home/NearbyAndMap";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const page = await getLayoutPage("home");
+  const copy = await getPageCopy();
   return {
-    title: { absolute: page.seo.meta_title },
-    description: page.seo.meta_description,
+    title: { absolute: copy.home_seo.meta_title },
+    description: copy.home_seo.meta_description,
     openGraph: {
-      title: page.seo.meta_title,
-      description: page.seo.meta_description,
+      title: copy.home_seo.meta_title,
+      description: copy.home_seo.meta_description,
     },
   };
 }
 
 export default async function HomePage() {
-  const [settings, specials, products, design, layout] = await Promise.all([
+  const [settings, specials, products, design, copy] = await Promise.all([
     getSettings(),
     getMenuItems({ chefsSpecial: true }),
     getSpaProducts(),
     getDesign(),
-    getLayoutPage("home"),
+    getPageCopy(),
   ]);
 
   return (
     <>
       <RestaurantJsonLd settings={settings} design={design} />
       <LocalBusinessJsonLd settings={settings} design={design} />
-      <PublicPageRenderer
-        page={layout}
-        design={design}
-        settings={settings}
-        specials={specials}
-        products={products}
-      />
+      <Hero design={design} />
+      <WisdomTriad design={design} />
+      <ExperienceSplit copy={copy.home_discover} />
+      <ChefsSpecial items={specials} copy={copy.home_chefs} />
+      <SpaGlimpse copy={copy.home_spa_glimpse} />
+      <ShopGlimpse products={products} copy={copy.home_shop} />
+      <Testimonials copy={copy.home_testimonials} />
+      <HoursStrip settings={settings} />
+      <NearbyAndMap settings={settings} />
     </>
   );
 }
